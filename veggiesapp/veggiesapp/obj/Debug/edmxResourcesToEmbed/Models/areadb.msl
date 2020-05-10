@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="testModel2StoreContainer" CdmEntityContainer="testEntities2">
+    <EntitySetMapping Name="areas">
+      <EntityTypeMapping TypeName="testModel2.area">
+        <MappingFragment StoreEntitySet="area">
+          <ScalarProperty Name="Area_ID" ColumnName="Area_ID" />
+          <ScalarProperty Name="Area_Name" ColumnName="Area_Name" />
+          <ScalarProperty Name="Shipping_Charge" ColumnName="Shipping_Charge" />
+          <ScalarProperty Name="Min_Amount" ColumnName="Min_Amount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

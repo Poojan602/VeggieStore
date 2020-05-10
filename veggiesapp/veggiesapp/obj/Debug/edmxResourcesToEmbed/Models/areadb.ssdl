@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="testModel2.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="8.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="area">
+    <Key>
+      <PropertyRef Name="Area_ID" />
+    </Key>
+    <Property Name="Area_ID" Type="int" Nullable="false" />
+    <Property Name="Area_Name" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Shipping_Charge" Type="int" Nullable="false" />
+    <Property Name="Min_Amount" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="testModel2StoreContainer">
+    <EntitySet Name="area" EntityType="Self.area" Schema="test" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

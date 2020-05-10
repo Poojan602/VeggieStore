@@ -1,0 +1,135 @@
+﻿
+@model veggiesapp.Models.dealer
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href=@Url.Content("~/Content/images/icons/favicon.ico") />
+    <!--===============================================================================================-->
+    <link href=@Url.Content("~/Content/vendor/bootstrap/css/bootstrap.min.css") rel="stylesheet" ) />
+    <!--===============================================================================================-->
+    <link href=@Url.Content("~/Content/fonts/font-awesome-4.7.0/css/font-awesome.min.css") rel="stylesheet" />
+    <!--===============================================================================================-->
+    <link href=@Url.Content("~/Content/fonts/iconic/css/material-design-iconic-font.min.css") rel="stylesheet" />
+    <!--===============================================================================================-->
+    <link href=@Url.Content("~/Content/vendor/animate/animate.css") rel="stylesheet" />
+    <!--===============================================================================================-->
+    <link href=@Url.Content("~/Content/vendor/css-hamburgers/hamburgers.min.css") rel="stylesheet" />
+    <!--===============================================================================================-->
+    <link href=@Url.Content("~/Content/vendor/animsition/css/animsition.min.css") rel="stylesheet" />
+    <!--===============================================================================================-->
+    <link href=@Url.Content("~/Content/vendor/select2/select2.min.css") rel="stylesheet" />
+    <!--===============================================================================================-->
+    <link href=@Url.Content("~/Content/vendor/daterangepicker/daterangepicker.css") rel="stylesheet" />
+    <!--===============================================================================================-->
+    <link href=@Url.Content("~/Content/css/util.css") rel="stylesheet" />
+    <link href=@Url.Content("~/Content/css/main.css") rel="stylesheet" />
+    <!--===============================================================================================-->
+</head>
+
+<body>
+    @using (Html.BeginForm("Authorize", "DealerLogin", FormMethod.Post, new { @onsubmit = "return validation()" }))
+    {
+        <div class="limiter">
+            <div class="container-login100">
+                <div class="wrap-login100">
+                    <form class="login100-form validate-form">
+                        @if(ViewBag.loginerror != null)
+                        {
+                        <div class="text-center">
+                            <div class="text-danger">@ViewBag.loginerror</div><br />
+                        </div>
+                        }
+                        <span class="login100-form-title p-b-26">
+                            Welcome
+                        </span>
+                        <span class="login100-form-title p-b-48">
+                            <i class="fa fa-user"></i>
+                        </span>
+
+                        <div class="wrap-input100 validate-input" data-validate="Enter Username">
+                            @Html.TextBoxFor(m => m.Email, new { @name = "UserName", @class = "input100", id = "email" })
+                            <span class="focus-input100" data-placeholder="Email"></span>
+                            <span id="evalidation" class="text-danger"></span>
+                        </div>
+
+                        <div class="wrap-input100 validate-input" data-validate="Enter password">
+                            <span class="btn-show-pass">
+                                <i class="zmdi zmdi-eye"></i>
+                            </span>
+                            @Html.TextBoxFor(m => m.Password, new { @name = "Password", @class = "input100", @type = "password" })
+                            <span class="focus-input100" data-placeholder="Password"></span>
+                        </div>
+
+                        <div class="container-login100-form-btn">
+                            <div class="wrap-login100-form-btn">
+                                <div class="login100-form-bgbtn"></div>
+                                <button class="login100-form-btn">
+                                    Login
+                                </button>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col">
+                                <a href="~/DealerRegistration/RegistrationForm">Sign UP</a>
+                            </div>
+                            <div class="col">
+                                <a href="~/DealerLogin/resetpassword">Forgot Password</a>
+                            </div>
+                        </div>
+                        @*@Html.ValidationSummary(true,"")*@
+                    </form>
+                </div>
+            </div>
+        </div>
+    }
+
+
+    <!--===============================================================================================-->
+    <script src=@Url.Content("~/Scripts/jquery-3.3.1.min.js")></script>
+    <!--===============================================================================================-->
+    <script src=@Url.Content("~/Scripts/animsition.min.js")></script>
+    <!--===============================================================================================-->
+    <script src=@Url.Content("~/Scripts/popper.js")></script>
+    <script src=@Url.Content("~/Scripts/bootstrap.bundle.min.js")></script>
+    <!--===============================================================================================-->
+    <script src=@Url.Content("~/Scripts/select2.min.js")></script>
+    <!--===============================================================================================-->
+    <script src=@Url.Content("~/Scripts/moment.min.js")></script>
+    <script src=@Url.Content("~/Scripts/daterangepicker.js")></script>
+    <!--===============================================================================================-->
+    <script src=@Url.Content("~/Scripts/countdowntime.js")></script>
+    <!--===============================================================================================-->
+    <script src=@Url.Content("~/Scripts/main.js")></script>
+
+    <script>
+        function validation() {
+            var emailvalue = document.getElementById("email").value;
+            var filter = /^(([^<>()\[\]\\.,;:\s@@"]+(\.[^<>()\[\]\\.,;:\s@@"]+)*)|(".+"))@@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+            if (emailvalue == "") {
+                document.getElementById("evalidation").innerHTML = "Enter Email address";
+                return false;
+            }
+            else {
+                if (filter.test(emailvalue)) {
+                    document.getElementById("evalidation").innerHTML = "";
+                    return true;
+                }
+                else {
+                    document.getElementById("evalidation").innerHTML = "Invalid Email Address";
+                    return false;
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>
+

@@ -1,0 +1,75 @@
+﻿@{
+    ViewBag.Title = "editsubscription";
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+
+@model veggiesapp.Models.subscription
+
+<div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="page-header">
+            <h2 class="pageheader-title">Subsciption Management</h2>
+            <p class="pageheader-text">Nulla euismod urna eros, sit amet scelerisque torton lectus vel mauris facilisis faucibus at enim quis massa lobortis rutrum.</p>
+            <div class="page-breadcrumb">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Subscription Management</li>
+                        <li class="breadcrumb-item" aria-current="page">Edit Subscription</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!-- horizontal form -->
+    <!-- ============================================================== -->
+    <div class="col-12">
+        <div class="card">
+            <h5 class="card-header" style="background-color:#71748d;color:white">Add Subscription Details</h5>
+            <div class="card-body" style="text-align:center">
+                @using (Html.BeginForm("updatesubscription", "Subscription", FormMethod.Post))
+                {
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group row" style="margin-left: 40px;">
+                        <label for="inputEmail2" class="col-3 col-lg-2 col-form-label text-left">Name</label>
+                        <div class="col-5">
+                            @Html.HiddenFor(m => m.id)
+                            @Html.TextBoxFor(m => m.Name)<br />
+                            @Html.ValidationMessageFor(m => m.Name, null, new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group row" style="margin-left: 40px;">
+                        <label for="inputEmail2" class="col-3 col-lg-2 col-form-label text-left">Days</label>
+                        <div class="col-5">
+                            @Html.TextBoxFor(m => m.days)<br />
+                            @Html.ValidationMessageFor(m => m.days, null, new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group row" style="margin-left: 40px;">
+                        <label for="inputEmail2" class="col-3 col-lg-2 col-form-label text-left">Amount</label>
+                        <div class="col-5">
+                            @Html.TextBoxFor(m => m.amount)<br />
+                            @Html.ValidationMessageFor(m => m.amount, null, new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row pt-2 pt-sm-2 mt-1">
+                        <div class="col-3">
+                            <p style="margin-left: 40px;">
+                                <input type="submit" value="Update" class="btn btn-space btn-primary" onclick="return confirm('are you sure you want to Update this Subscription?');">
+                                <a href=@Url.Action("viewsubscription","Subscription")><input type="button" value="Cancel" class="btn btn-space btn-primary"></a>
+                            </p>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- end horizontal form -->
+    <!-- ============================================================== -->
+</div>

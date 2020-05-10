@@ -1,0 +1,233 @@
+﻿
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+
+@model IEnumerable<veggiesapp.Models.OrdermasterCustomerjoin>
+
+<!-- ============================================================== -->
+<!-- pageheader  -->
+<!-- ============================================================== -->
+<div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="page-header">
+            <h2 class="pageheader-title">Dashboard</h2>
+            <hr />
+        </div>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!-- end pageheader  -->
+<!-- ============================================================== -->
+
+<div class="row">
+    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+        <div class="card">
+            <div class="card-header bg-danger text-center p-3 ">
+                <h4 class="mb-0 text-white">Customer Review</h4>
+            </div>
+            <div class="card-body text-center">
+                <h1 class="fa fa-pencil fa-5x"></h1>
+            </div>
+            <div class="card-body border-top">
+                <a href="@Url.Action("viewreviews","Review")" class="btn btn-outline-secondary btn-block text-center">View Customer Review</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+        <div class="card">
+            <div class="card-header bg-info text-center p-3 ">
+                <h4 class="mb-0 text-white">New Registration</h4>
+            </div>
+            <div class="card-body text-center">
+                <h1 class="fa fa-users fa-5x"></h1>
+            </div>
+            <div class="card-body border-top">
+                <a href="@Url.Action("activedealer","Dealer")" class="btn btn-outline-secondary btn-block text-lg-center">View Registered Dealers</a>
+            </div>
+        </div>
+    </div>
+    @*<div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+        <div class="card">
+            <div class="card-header bg-brand text-center p-3 ">
+                <h4 class="mb-0 text-white">Tickets Pending</h4>
+            </div>
+            <div class="card-body text-center">
+                <h1 class="fa fa-ticket fa-5x"></h1>
+            </div>
+            <div class="card-body border-top">
+                <a href="@Url.Action("viewticket","Ticket")" class="btn btn-outline-secondary btn-block text-center">View Tickets</a>
+            </div>
+        </div>
+    </div>*@
+    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+        <div class="card">
+            <div class="card-header bg-primary text-center p-3 ">
+                <h4 class="mb-0 text-white">New Contact Enquiry</h4>
+            </div>
+            <div class="card-body text-center">
+                <h1 class="fa fa-user fa-5x"></h1>
+            </div>
+            <div class="card-body border-top">
+                <a href="@Url.Action("ViewEnquiry","Franchise")" class="btn btn-outline-secondary btn-block text-center">Contact Enquiry</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="ecommerce-widget">
+    <div class="row">
+        <!-- recent orders  -->
+        <!-- ============================================================== -->
+        <div class="col-xl-12 col-lg-12 col-md-6 col-sm-12 col-12">
+            <div class="card">
+                <h5 class="card-header text-center">Recent Orders</h5>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class="bg-light">
+                                <tr class="border-0">
+                                    <th class="border-0">Order Number</th>
+                                    <th class="border-0">Customer Name</th>
+                                    <th class="border-0">Amount</th>
+                                    <th class="border-0">Order Date / Time</th>
+                                    <th class="border-0">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.objordmaster.ordernumber</td>
+                                        <td>@item.objordmaster.Name</td>
+                                        <td>@item.objordmaster.Grandtotal</td>
+                                        <td>@item.objordmaster.Orderdate</td>
+                                        @if (item.objordmaster.OrderStatus == 0)
+                                        {
+                                            <td><span class="badge-dot badge-danger mr-1"></span>UnConfirm</td>
+                                        }
+                                        else if (item.objordmaster.OrderStatus == 1)
+                                        {
+                                            <td><span class="badge-dot badge-success mr-1"></span>Confirm</td>
+                                        }
+                                        else if (item.objordmaster.OrderStatus == 2)
+                                        {
+                                            <td><span class="badge-dot badge-warning mr-1"></span>Packing Done</td>
+                                        }
+                                        else if (item.objordmaster.OrderStatus == 3)
+                                        {
+                                            <td><span class="badge-dot badge-info mr-1"></span>Out For Delivery</td>
+                                        }
+                                        else if (item.objordmaster.OrderStatus == 4)
+                                        {
+                                            <td><span class="badge-dot badge-primary mr-1"></span>Delivered</td>
+                                        }
+                                        else if (item.objordmaster.OrderStatus == 5)
+                                        {
+                                            <td><span class="badge-dot badge-light mr-1"></span>Return Order</td>
+                                        }
+                                        else if (item.objordmaster.OrderStatus == 6)
+                                        {
+                                            <td><span class="badge-dot badge-dark mr-1"></span>Refunded</td>
+                                        }
+                                    </tr>
+                                }
+                                <tr>
+                                    <td colspan="9"><a href="@Url.Action("allorders","Order")" class="btn btn-outline-light float-right">View Details</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- end recent orders  -->
+        <!-- ============================================================== -->
+    </div>
+
+    <div class="row">
+        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-inline-block">
+                        <h5 class="text-muted">Total Revenue</h5>
+                        <h2 class="mb-0">&#x20B9; @ViewBag.totalrevenue</h2>
+                    </div>
+                    <div class="float-right icon-circle-medium icon-box-lg bg-info-light mt-1">
+                        <i class="fa fa-money fa-fw fa-sm text-info"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-inline-block">
+                        <h5 class="text-muted">Total Dealers</h5>
+                        <h2 class="mb-0">@ViewBag.totaldlr</h2>
+                    </div>
+                    <div class="float-right icon-circle-medium icon-box-lg bg-primary-light mt-1">
+                        <i class="fa fa-users fa-fw fa-sm text-primary"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-inline-block">
+                        <h5 class="text-muted">Total Return Orders</h5>
+                        <h2 class="mb-0">@ViewBag.returneditems</h2>
+                    </div>
+                    <div class="float-right icon-circle-medium  icon-box-lg  bg-secondary-light mt-1">
+                        <i class="fa fa-truck fa-fw fa-sm text-secondary"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-inline-block">
+                        <h5 class="text-muted">Average Revenue Per User</h5>
+                        <h2 class="mb-0">&#x20B9; @ViewBag.avgrevenue</h2>
+                    </div>
+                    <div class="float-right icon-circle-medium  icon-box-lg  bg-brand-light mt-1">
+                        <i class="fa fa-money fa-fw fa-sm text-brand"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-inline-block">
+                        <h5 class="text-muted">Total Customers</h5>
+                        <h2 class="mb-0">@ViewBag.totalcust</h2>
+                    </div>
+                    <div class="float-right icon-circle-medium  icon-box-lg  bg-primary-light mt-1">
+                        <i class="fa fa-users fa-fw fa-sm text-primary"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-inline-block">
+                        <h5 class="text-muted">Total Refunds</h5>
+                        <h2 class="mb-0">&#x20B9; @ViewBag.totalreturnvalue</h2>
+                    </div>
+                    <div class="float-right icon-circle-medium  icon-box-lg  bg-secondary-light mt-1">
+                        <i class="fa fa-money fa-fw fa-sm text-secondary"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

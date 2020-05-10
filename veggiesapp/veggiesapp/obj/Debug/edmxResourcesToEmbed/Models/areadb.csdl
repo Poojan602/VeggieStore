@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="testModel2" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="area">
+    <Key>
+      <PropertyRef Name="Area_ID" />
+    </Key>
+    <Property Name="Area_ID" Type="Int32" Nullable="false" />
+    <Property Name="Area_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Shipping_Charge" Type="Int32" Nullable="false" />
+    <Property Name="Min_Amount" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="testEntities2" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="areas" EntityType="Self.area" />
+  </EntityContainer>
+</Schema>

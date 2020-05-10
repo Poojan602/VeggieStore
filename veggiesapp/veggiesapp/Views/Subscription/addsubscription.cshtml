@@ -1,0 +1,74 @@
+﻿@{
+             
+                ViewBag.Title = "addsubscription";
+                Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+
+@model veggiesapp.Models.subscription
+
+<div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="page-header">
+            <h2 class="pageheader-title">Subsciption Management</h2>
+            <p class="pageheader-text">Nulla euismod urna eros, sit amet scelerisque torton lectus vel mauris facilisis faucibus at enim quis massa lobortis rutrum.</p>
+            <div class="page-breadcrumb">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Subscription Management</li>
+                        <li class="breadcrumb-item" aria-current="page">Add Subscription</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!-- horizontal form -->
+    <!-- ============================================================== -->
+    <div class="col-12">
+        <div class="card">
+            <h5 class="card-header" style="background-color:#71748d;color:white">Add Subscription Details</h5>
+            <div class="card-body" style="text-align:center">
+                @using (Html.BeginForm("addintersubscription", "Subscription", FormMethod.Post))
+                {
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group row" style="margin-left: 40px;">
+                        <label for="inputEmail2" class="col-3 col-lg-2 col-form-label text-left">Name</label>
+                        <div class="col-5">
+                            @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })<br />
+                            @Html.ValidationMessageFor(m => m.Name, null , new { @class = "text-danger" } )
+                        </div>
+                    </div>
+                    <div class="form-group row" style="margin-left: 40px;">
+                        <label for="inputEmail2" class="col-3 col-lg-2 col-form-label text-left">Days</label>
+                        <div class="col-5">
+                            @Html.TextBoxFor(m => m.days, new { @class = "form-control" })<br />
+                            @Html.ValidationMessageFor(m => m.days, null, new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group row" style="margin-left: 40px;">
+                        <label for="inputEmail2" class="col-3 col-lg-2 col-form-label text-xl-left">Amount</label>
+                        <div class="col-5">
+                            @Html.TextBoxFor(m => m.amount, new { @class = "form-control" })<br />
+                            @Html.ValidationMessageFor(m => m.amount, null, new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row pt-2 pt-sm-2 mt-1">
+                        <div class="col-2">
+                            <p style="margin-left: 40px">
+                                <button type="submit" class="btn btn-space btn-primary">Submit</button>
+                            </p>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- end horizontal form -->
+    <!-- ============================================================== -->
+</div>

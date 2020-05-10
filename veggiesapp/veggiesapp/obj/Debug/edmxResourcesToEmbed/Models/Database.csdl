@@ -1,0 +1,903 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="sabziappModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="addressbook">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="Landmark" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="State" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="District" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PostCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="addeddate" Type="DateTime" />
+    <Property Name="addedip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="modifydate" Type="DateTime" />
+    <Property Name="modifyip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="isreg" Type="Boolean" />
+    <Property Name="Cid" Type="Int64" />
+    <Property Name="mobiledefault" Type="Boolean" />
+    <Property Name="MobileTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="admin">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="unm" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="pwd" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="modifyip" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="mshost" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="msusername" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="mspass" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Backupdt" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="adminlog">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="unm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="aip" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="adate" Type="DateTime" />
+    <Property Name="asucess" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="appdevice">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="deviceid" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="devicetype" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="deviceinfo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="addeddate" Type="DateTime" />
+    <Property Name="addedip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="isactive" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="area">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cityid" Type="Int64" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="visible" Type="Boolean" />
+    <Property Name="addeddate" Type="DateTime" />
+    <Property Name="addedip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="modifydate" Type="DateTime" />
+    <Property Name="modifyip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="shippingcharge" Type="Decimal" />
+    <Property Name="minimumcharge" Type="Decimal" />
+  </EntityType>
+  <EntityType Name="areaselected">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="areaid" Type="Int64" />
+    <Property Name="dealerid" Type="Int64" />
+  </EntityType>
+  <EntityType Name="cart">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="custid" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="Proid" Type="Int64" />
+    <Property Name="priceid" Type="Int64" />
+    <Property Name="areaid" Type="Int64" />
+    <Property Name="Quantity" Type="Int64" />
+    <Property Name="isspecial" Type="Byte" />
+    <Property Name="instruction" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="city">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="visible" Type="Boolean" />
+    <Property Name="addeddate" Type="DateTime" />
+    <Property Name="addedip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="modifydate" Type="DateTime" />
+    <Property Name="modifyip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="currentversion">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="version" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="customer">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="Landmark" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="State" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PostCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Country" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="Boolean" />
+    <Property Name="Addeddate" Type="DateTime" />
+    <Property Name="Addedip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Modifydate" Type="DateTime" />
+    <Property Name="Modifyip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="numConfirmed" Type="Boolean" />
+    <Property Name="areaid" Type="Int64" />
+    <Property Name="deviceid" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="dealer">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="Landmark" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="Int64" />
+    <Property Name="State" Type="Int64" />
+    <Property Name="PostCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="Boolean" />
+    <Property Name="Addeddate" Type="DateTime" />
+    <Property Name="Addedip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Modifydate" Type="DateTime" />
+    <Property Name="Modifyip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="numConfirmed" Type="Boolean" />
+    <Property Name="unread" Type="Byte" />
+    <Property Name="SlotDescription" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="otherarea" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="dealersnotification">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="dealerid" Type="Int64" />
+    <Property Name="message" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="addeddate" Type="DateTime" />
+    <Property Name="addedip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Unread" Type="Byte" />
+  </EntityType>
+  <EntityType Name="deliveryslot">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="timeslot" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="active" Type="Boolean" />
+    <Property Name="modifydate" Type="DateTime" />
+    <Property Name="modifyip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="modifyby" Type="Int32" />
+    <Property Name="totalorders" Type="Int64" />
+    <Property Name="isactive" Type="Boolean" />
+    <Property Name="Dealerid" Type="Int64" />
+  </EntityType>
+  <EntityType Name="dist_state">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="subid" Type="Int64" />
+    <Property Name="visible" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="emailtemplate">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="modifyip" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="modifydate" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="enquiry">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="fname" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="lname" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="city" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="message" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="addeddate" Type="DateTime" />
+    <Property Name="addedip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="unread" Type="Byte" />
+  </EntityType>
+  <EntityType Name="faq">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="Visible" Type="Boolean" />
+    <Property Name="Question" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Answer" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="Catid" Type="Int64" />
+    <Property Name="sortorder" Type="Int64" />
+    <Property Name="addeddate" Type="DateTime" />
+    <Property Name="addedip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="modifydate" Type="DateTime" />
+    <Property Name="modifyip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="faqcategory">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="Visible" Type="Boolean" />
+    <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="sortorder" Type="Int64" />
+    <Property Name="AddedDate" Type="DateTime" />
+    <Property Name="AddedIp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ModifyDate" Type="DateTime" />
+    <Property Name="ModifyIp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="faqenquiry">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="message" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="addeddate" Type="DateTime" />
+    <Property Name="addedip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="unread" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="holiday">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="addeddate" Type="DateTime" />
+    <Property Name="addedip" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="modifydate" Type="DateTime" />
+    <Property Name="ModifyIp" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="holidaydate" Type="DateTime" />
+    <Property Name="dealerid" Type="Int64" />
+  </EntityType>
+  <EntityType Name="homebanner">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="visible" Type="Boolean" />
+    <Property Name="image" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="link" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="sortorder" Type="Int64" />
+    <Property Name="addeddate" Type="DateTime" />
+    <Property Name="addedip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="modifydate" Type="DateTime" />
+    <Property Name="modifyip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="dealerid" Type="Int64" />
+    <Property Name="ismainpage" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="insidepage">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" />
+    <Property Name="PageName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="PageIETitle" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="PageDesc" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="Meta" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="addedip" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="addeddate" Type="DateTime" />
+    <Property Name="modifyip" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="modifydate" Type="DateTime" />
+    <Property Name="sortorder" Type="Int64" />
+  </EntityType>
+  <EntityType Name="newslettercampaign">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="fromEmail" Type="String" MaxLength="245" FixedLength="false" Unicode="false" />
+    <Property Name="subject" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="body" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="Boolean" />
+    <Property Name="addeddate" Type="DateTime" />
+    <Property Name="addedip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="modifydate" Type="DateTime" />
+    <Property Name="modifyip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="subscriberCnt" Type="Int64" />
+  </EntityType>
+  <EntityType Name="newslettergroup">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="addeddate" Type="DateTime" />
+    <Property Name="addedIp" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="ModifyDate" Type="DateTime" />
+    <Property Name="ModifyIp" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="newslettersendhistory">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="CampaignId" Type="Int64" />
+    <Property Name="ToMail" Type="String" MaxLength="245" FixedLength="false" Unicode="false" />
+    <Property Name="ToName" Type="String" MaxLength="145" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="newslettersubscriber">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="Visible" Type="Boolean" />
+    <Property Name="groupid" Type="Int64" />
+    <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="AddedDate" Type="DateTime" />
+    <Property Name="AddedIp" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="ModifyDate" Type="DateTime" />
+    <Property Name="ModifyIp" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="newslettertemplate">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="addeddate" Type="DateTime" />
+    <Property Name="addedIp" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="ModifyDate" Type="DateTime" />
+    <Property Name="ModifyIp" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="notification">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Message" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="addeddate" Type="DateTime" />
+    <Property Name="image" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="dealerid" Type="Int64" />
+  </EntityType>
+  <EntityType Name="orderitem">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="Ordid" Type="Int64" />
+    <Property Name="pid" Type="Int64" />
+    <Property Name="cat1id" Type="Int64" />
+    <Property Name="cat2id" Type="Int64" />
+    <Property Name="Image" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="HindiTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="price" Type="Decimal" />
+    <Property Name="Weight" Type="Decimal" />
+    <Property Name="Unit" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Qty" Type="Int64" />
+    <Property Name="amount" Type="Decimal" />
+    <Property Name="Delivery" Type="Decimal" />
+    <Property Name="priceDesc" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="specialInstruction" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="SpecialType" Type="Int64" />
+    <Property Name="itempriceid" Type="Int64" />
+    <Property Name="CGST" Type="Decimal" />
+    <Property Name="SGST" Type="Decimal" />
+  </EntityType>
+  <EntityType Name="ordermaster">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="State" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="District" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Postcode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Landmark" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="BEmail" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="BAddress" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="BCity" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="BState" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="BPostCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="BLandmark" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="BPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="uid" Type="Int64" />
+    <Property Name="Subtotal" Type="Decimal" />
+    <Property Name="Grandtotal" Type="Decimal" />
+    <Property Name="Delivery" Type="Decimal" />
+    <Property Name="discount" Type="Decimal" />
+    <Property Name="Orderdate" Type="DateTime" />
+    <Property Name="Orderip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Total" Type="Decimal" />
+    <Property Name="OrderStatus" Type="Int64" />
+    <Property Name="GiftCodeType" Type="Int64" />
+    <Property Name="ordernumber" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="unread" Type="Byte" />
+    <Property Name="Admincomments" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="AutoProcessDone" Type="Int64" />
+    <Property Name="ModifyDate" Type="DateTime" />
+    <Property Name="ModifyIp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DiscountDESC" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="FromWallet" Type="Decimal" />
+    <Property Name="Express" Type="Int64" />
+    <Property Name="DeliveryOn" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="paymentmode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Ordertime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="dealerid" Type="Int64" />
+    <Property Name="israting" Type="Byte" />
+    <Property Name="rating" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="review" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="pricemanager">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Weight" Type="Int64" />
+    <Property Name="Description" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="APrice" Type="Decimal" />
+    <Property Name="DPrice" Type="Decimal" />
+    <Property Name="productid" Type="Int64" />
+    <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Pqty" Type="Int64" />
+    <Property Name="Rlevel" Type="Int64" />
+  </EntityType>
+  <EntityType Name="product">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="HindiTitle" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="cat1id" Type="Int64" />
+    <Property Name="cat2id" Type="Int64" />
+    <Property Name="DESCabout" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="DESCbenifits" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="DESChowtouse" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="UOM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="visible" Type="Boolean" />
+    <Property Name="featured" Type="Boolean" />
+    <Property Name="sortorder" Type="Int64" />
+    <Property Name="addeddate" Type="DateTime" />
+    <Property Name="addedip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="modifydate" Type="DateTime" />
+    <Property Name="modifyip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cityid" Type="Int64" />
+    <Property Name="dealerid" Type="Int64" />
+    <Property Name="type" Type="Byte" />
+    <Property Name="Image" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="productcategory1">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="visible" Type="Boolean" />
+    <Property Name="sortorder" Type="Int64" />
+    <Property Name="addeddate" Type="DateTime" />
+    <Property Name="addedip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="modifydate" Type="DateTime" />
+    <Property Name="modifyip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="image" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="dealerid" Type="Int64" />
+  </EntityType>
+  <EntityType Name="productcategory2">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cat1id" Type="Int64" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="visible" Type="Boolean" />
+    <Property Name="addeddate" Type="DateTime" />
+    <Property Name="addedip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="modifydate" Type="DateTime" />
+    <Property Name="modifyip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="image" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="dealerid" Type="Int64" />
+  </EntityType>
+  <EntityType Name="redeedmvippoint">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="amount" Type="Decimal" />
+    <Property Name="issuedate" Type="DateTime" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="UID" Type="Int64" />
+    <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="AddedDate" Type="DateTime" />
+    <Property Name="Addedip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="refundhistory">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="uid" Type="Int64" />
+    <Property Name="amount" Type="Decimal" />
+    <Property Name="ordid" Type="Int64" />
+    <Property Name="addeddate" Type="DateTime" />
+    <Property Name="addedip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="canceled" Type="Int64" />
+    <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="searchhistory">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="word" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="searchdate" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="sendnewsletterscheduler">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="toemail" Type="String" MaxLength="245" FixedLength="false" Unicode="false" />
+    <Property Name="campaignid" Type="Int64" />
+  </EntityType>
+  <EntityType Name="shippingcharge">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="shippingcharge1" Type="Decimal" />
+    <Property Name="modifydate" Type="DateTime" />
+    <Property Name="modifyip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="minimumamount" Type="Decimal" />
+    <Property Name="area" Type="Int64" />
+    <Property Name="city" Type="Int64" />
+    <Property Name="addeddate" Type="DateTime" />
+    <Property Name="addedip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="siteprofile">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="mshost" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="msusername" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="mspass" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="contemail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="contccemail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="contbccemail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="addedip" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="addeddate" Type="DateTime" />
+    <Property Name="modifyip" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="modifydate" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="specialpricemanager">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="Weight" Type="Int64" />
+    <Property Name="Description" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="APrice" Type="Decimal" />
+    <Property Name="DPrice" Type="Decimal" />
+    <Property Name="productid" Type="Int64" />
+    <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="specialproduct">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="HindiTitle" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="cat1id" Type="Int64" />
+    <Property Name="cat2id" Type="Int64" />
+    <Property Name="Description" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="UOM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="visible" Type="Boolean" />
+    <Property Name="featured" Type="Boolean" />
+    <Property Name="sortorder" Type="Int64" />
+    <Property Name="addeddate" Type="DateTime" />
+    <Property Name="addedip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="modifydate" Type="DateTime" />
+    <Property Name="modifyip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="offerdate" Type="DateTime" />
+    <Property Name="cityid" Type="Int64" />
+    <Property Name="Specialweight" Type="Int64" />
+    <Property Name="dealerid" Type="Int64" />
+  </EntityType>
+  <EntityType Name="specialproductimage">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="productid" Type="Int64" />
+  </EntityType>
+  <EntityType Name="specialstockmanager">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="Areaid" Type="Int64" />
+    <Property Name="productid" Type="Int64" />
+    <Property Name="Quantity" Type="Int64" />
+    <Property Name="reorderlevel" Type="Int64" />
+  </EntityType>
+  <EntityType Name="stockmanager">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="Areaid" Type="Int64" />
+    <Property Name="productid" Type="Int64" />
+    <Property Name="Quantity" Type="Int64" />
+    <Property Name="reorderlevel" Type="Int64" />
+  </EntityType>
+  <EntityType Name="subscription">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="month" Type="Int64" />
+    <Property Name="days" Type="Int64" />
+    <Property Name="amount" Type="Decimal" />
+    <Property Name="Visible" Type="Boolean" />
+    <Property Name="addeddate" Type="DateTime" />
+    <Property Name="addedip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="modifydate" Type="DateTime" />
+    <Property Name="modifyip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="subscriptionselected">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="dealerid" Type="Int64" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="month" Type="Int64" />
+    <Property Name="days" Type="Int64" />
+    <Property Name="amount" Type="Decimal" />
+    <Property Name="status" Type="Byte" />
+    <Property Name="enddate" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="supporttype">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="type" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="addeddate" Type="DateTime" />
+    <Property Name="addedip" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="visible" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="160" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="tax">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="ProductTax" Type="Decimal" />
+    <Property Name="RestTax" Type="Decimal" />
+    <Property Name="ModifyDate" Type="DateTime" />
+    <Property Name="ModifyIp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="testimonial">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="Visible" Type="Boolean" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Position" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Company" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Image" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="sortorder" Type="Int64" />
+    <Property Name="AddedDate" Type="DateTime" />
+    <Property Name="AddedIp" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="ModifyDate" Type="DateTime" />
+    <Property Name="ModifyIp" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ticketdetail">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ticketid" Type="Int64" />
+    <Property Name="comments" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="replytype" Type="Boolean" />
+    <Property Name="Addeddate" Type="DateTime" />
+    <Property Name="Addedip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Modifydate" Type="DateTime" />
+    <Property Name="Modifyip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ticket">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="customerid" Type="Int64" />
+    <Property Name="subject" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ticketid" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="Boolean" />
+    <Property Name="replystatus" Type="Boolean" />
+    <Property Name="supportfor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Addeddate" Type="DateTime" />
+    <Property Name="Addedip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="closedate" Type="DateTime" />
+    <Property Name="reopendate" Type="DateTime" />
+    <Property Name="adminunread" Type="Byte" />
+    <Property Name="Dealerunread" Type="Byte" />
+  </EntityType>
+  <EntityType Name="voucher">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Type" Type="Int16" />
+    <Property Name="VoucherAmount" Type="Decimal" />
+    <Property Name="MinimumAmount" Type="Decimal" />
+    <Property Name="PublishDate" Type="DateTime" />
+    <Property Name="ExpiryDate" Type="DateTime" />
+    <Property Name="Towhom" Type="Int16" />
+    <Property Name="AdminNote" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="addeddate" Type="DateTime" />
+    <Property Name="addedIp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ModifyDate" Type="DateTime" />
+    <Property Name="ModifyIp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Sent" Type="Boolean" />
+    <Property Name="SenttoAll" Type="Boolean" />
+    <Property Name="areaid" Type="Int64" />
+  </EntityType>
+  <EntityType Name="voucheruser">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="VoucherID" Type="Int64" />
+    <Property Name="UserEmail" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="Used" Type="Boolean" />
+    <Property Name="EMailSend" Type="Boolean" />
+    <Property Name="Username" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="wallet">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="amount" Type="Decimal" />
+    <Property Name="uid" Type="Int64" />
+    <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="modifydate" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="sampleproduct">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="HindiTitle" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="cat1id" Type="Int64" />
+    <Property Name="cat2id" Type="Int64" />
+    <Property Name="DESCabout" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="DESCbenifits" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="DESChowtouse" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="UOM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="visible" Type="Boolean" />
+    <Property Name="featured" Type="Boolean" />
+    <Property Name="sortorder" Type="Int64" />
+    <Property Name="addeddate" Type="DateTime" />
+    <Property Name="addedip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="modifydate" Type="DateTime" />
+    <Property Name="modifyip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cityid" Type="Int64" />
+    <Property Name="dealerid" Type="Int64" />
+    <Property Name="type" Type="Byte" />
+  </EntityType>
+  <EntityType Name="sampleproductimage">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="productid" Type="Int64" />
+  </EntityType>
+  <EntityContainer Name="sabziappEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="addressbooks" EntityType="Self.addressbook" />
+    <EntitySet Name="admins" EntityType="Self.admin" />
+    <EntitySet Name="adminlogs" EntityType="Self.adminlog" />
+    <EntitySet Name="appdevices" EntityType="Self.appdevice" />
+    <EntitySet Name="areas" EntityType="Self.area" />
+    <EntitySet Name="areaselecteds" EntityType="Self.areaselected" />
+    <EntitySet Name="carts" EntityType="Self.cart" />
+    <EntitySet Name="cities" EntityType="Self.city" />
+    <EntitySet Name="currentversions" EntityType="Self.currentversion" />
+    <EntitySet Name="customers" EntityType="Self.customer" />
+    <EntitySet Name="dealers" EntityType="Self.dealer" />
+    <EntitySet Name="dealersnotifications" EntityType="Self.dealersnotification" />
+    <EntitySet Name="deliveryslots" EntityType="Self.deliveryslot" />
+    <EntitySet Name="dist_state" EntityType="Self.dist_state" />
+    <EntitySet Name="emailtemplates" EntityType="Self.emailtemplate" />
+    <EntitySet Name="enquiries" EntityType="Self.enquiry" />
+    <EntitySet Name="faqs" EntityType="Self.faq" />
+    <EntitySet Name="faqcategories" EntityType="Self.faqcategory" />
+    <EntitySet Name="faqenquiries" EntityType="Self.faqenquiry" />
+    <EntitySet Name="holidays" EntityType="Self.holiday" />
+    <EntitySet Name="homebanners" EntityType="Self.homebanner" />
+    <EntitySet Name="insidepages" EntityType="Self.insidepage" />
+    <EntitySet Name="newslettercampaigns" EntityType="Self.newslettercampaign" />
+    <EntitySet Name="newslettergroups" EntityType="Self.newslettergroup" />
+    <EntitySet Name="newslettersendhistories" EntityType="Self.newslettersendhistory" />
+    <EntitySet Name="newslettersubscribers" EntityType="Self.newslettersubscriber" />
+    <EntitySet Name="newslettertemplates" EntityType="Self.newslettertemplate" />
+    <EntitySet Name="notifications" EntityType="Self.notification" />
+    <EntitySet Name="orderitems" EntityType="Self.orderitem" />
+    <EntitySet Name="ordermasters" EntityType="Self.ordermaster" />
+    <EntitySet Name="pricemanagers" EntityType="Self.pricemanager" />
+    <EntitySet Name="products" EntityType="Self.product" />
+    <EntitySet Name="productcategory1" EntityType="Self.productcategory1" />
+    <EntitySet Name="productcategory2" EntityType="Self.productcategory2" />
+    <EntitySet Name="redeedmvippoints" EntityType="Self.redeedmvippoint" />
+    <EntitySet Name="refundhistories" EntityType="Self.refundhistory" />
+    <EntitySet Name="searchhistories" EntityType="Self.searchhistory" />
+    <EntitySet Name="sendnewsletterschedulers" EntityType="Self.sendnewsletterscheduler" />
+    <EntitySet Name="shippingcharges" EntityType="Self.shippingcharge" />
+    <EntitySet Name="siteprofiles" EntityType="Self.siteprofile" />
+    <EntitySet Name="specialpricemanagers" EntityType="Self.specialpricemanager" />
+    <EntitySet Name="specialproducts" EntityType="Self.specialproduct" />
+    <EntitySet Name="specialproductimages" EntityType="Self.specialproductimage" />
+    <EntitySet Name="specialstockmanagers" EntityType="Self.specialstockmanager" />
+    <EntitySet Name="stockmanagers" EntityType="Self.stockmanager" />
+    <EntitySet Name="subscriptions" EntityType="Self.subscription" />
+    <EntitySet Name="subscriptionselecteds" EntityType="Self.subscriptionselected" />
+    <EntitySet Name="supporttypes" EntityType="Self.supporttype" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="taxes" EntityType="Self.tax" />
+    <EntitySet Name="testimonials" EntityType="Self.testimonial" />
+    <EntitySet Name="ticketdetails" EntityType="Self.ticketdetail" />
+    <EntitySet Name="tickets" EntityType="Self.ticket" />
+    <EntitySet Name="vouchers" EntityType="Self.voucher" />
+    <EntitySet Name="voucherusers" EntityType="Self.voucheruser" />
+    <EntitySet Name="wallets" EntityType="Self.wallet" />
+    <EntitySet Name="sampleproducts" EntityType="Self.sampleproduct" />
+    <EntitySet Name="sampleproductimages" EntityType="Self.sampleproductimage" />
+  </EntityContainer>
+</Schema>

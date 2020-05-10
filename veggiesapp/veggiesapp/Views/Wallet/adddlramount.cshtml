@@ -1,0 +1,73 @@
+﻿
+@{
+    ViewBag.Title = "adddlramount";
+    Layout = "~/Views/Shared/MyLayout  dealer.cshtml";
+}
+
+@model veggiesapp.Models.wallet
+
+<div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="page-header">
+            <h2 class="pageheader-title">Wallet Management</h2>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12 ">
+        <div class="card">
+            <h5 class="card-header" style="background-color:#71748d;color:white">Add Wallet Amount</h5>
+            <div class="card-body">
+                @using (Html.BeginForm("adddlrinteramount", "Wallet", FormMethod.Post, new { @onsubmit = "return checkinput()" }))
+                {
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    if (@ViewBag.message != null)
+                    {
+                        <h3 class="text-danger">@ViewBag.message</h3>
+                    }
+                    @Html.HiddenFor(m => m.id)
+                    @Html.HiddenFor(m => m.uid)
+                    <div class="form-group row">
+                        <label for="inputEmail2" class="col-3 col-lg-2 col-form-label text-left">Add Amount for: <small>&nbsp; @ViewBag.username &nbsp;[@Html.DisplayFor(m => m.Email)] / Available Balance : &nbsp; @Html.DisplayFor(m => m.amount) &#x20B9;</small></label>
+                        <div class="col-4 col-lg-12">
+                            @Html.TextBoxFor(m => m.addamount, new { @class = "form-control", @id = "amount" })
+                            <span id="input" class="text-danger"></span><br /><hr />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-6 pl-0">
+                            <p>
+                                <button type="submit" class="btn btn-space btn-primary">Add</button>
+                            </p>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function checkinput() {
+        var amount = document.getElementById('amount').value;
+        var checkamount = /^[0-9]\d{0,9}(\.\d{ 1,3})?%?$/;
+
+        if (amount != "") {
+            document.getElementById("input").innerHTML = "";
+
+            if (checkamount.test(amount)) {
+                document.getElementById("input").innerHTML = "";
+                return true;
+            }
+            else {
+                document.getElementById("input").innerHTML = "Invalid Amount";
+                return false;
+            }
+        }
+        else {
+            document.getElementById("input").innerHTML = "Please enter Amount";
+            return false;
+        }
+    }
+</script>

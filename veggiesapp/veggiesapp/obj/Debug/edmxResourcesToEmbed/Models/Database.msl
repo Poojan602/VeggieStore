@@ -1,0 +1,903 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="sabziappModelStoreContainer" CdmEntityContainer="sabziappEntities">
+    <EntitySetMapping Name="addressbooks">
+      <EntityTypeMapping TypeName="sabziappModel.addressbook">
+        <MappingFragment StoreEntitySet="addressbook">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Landmark" ColumnName="Landmark" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="District" ColumnName="District" />
+          <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="addeddate" ColumnName="addeddate" />
+          <ScalarProperty Name="addedip" ColumnName="addedip" />
+          <ScalarProperty Name="modifydate" ColumnName="modifydate" />
+          <ScalarProperty Name="modifyip" ColumnName="modifyip" />
+          <ScalarProperty Name="isreg" ColumnName="isreg" />
+          <ScalarProperty Name="Cid" ColumnName="Cid" />
+          <ScalarProperty Name="mobiledefault" ColumnName="mobiledefault" />
+          <ScalarProperty Name="MobileTitle" ColumnName="MobileTitle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="admins">
+      <EntityTypeMapping TypeName="sabziappModel.admin">
+        <MappingFragment StoreEntitySet="admin">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="unm" ColumnName="unm" />
+          <ScalarProperty Name="pwd" ColumnName="pwd" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="modifyip" ColumnName="modifyip" />
+          <ScalarProperty Name="mshost" ColumnName="mshost" />
+          <ScalarProperty Name="msusername" ColumnName="msusername" />
+          <ScalarProperty Name="mspass" ColumnName="mspass" />
+          <ScalarProperty Name="Backupdt" ColumnName="Backupdt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="adminlogs">
+      <EntityTypeMapping TypeName="sabziappModel.adminlog">
+        <MappingFragment StoreEntitySet="adminlog">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="unm" ColumnName="unm" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="aip" ColumnName="aip" />
+          <ScalarProperty Name="adate" ColumnName="adate" />
+          <ScalarProperty Name="asucess" ColumnName="asucess" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="appdevices">
+      <EntityTypeMapping TypeName="sabziappModel.appdevice">
+        <MappingFragment StoreEntitySet="appdevice">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="deviceid" ColumnName="deviceid" />
+          <ScalarProperty Name="devicetype" ColumnName="devicetype" />
+          <ScalarProperty Name="deviceinfo" ColumnName="deviceinfo" />
+          <ScalarProperty Name="addeddate" ColumnName="addeddate" />
+          <ScalarProperty Name="addedip" ColumnName="addedip" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="isactive" ColumnName="isactive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="areas">
+      <EntityTypeMapping TypeName="sabziappModel.area">
+        <MappingFragment StoreEntitySet="area">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="cityid" ColumnName="cityid" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="visible" ColumnName="visible" />
+          <ScalarProperty Name="addeddate" ColumnName="addeddate" />
+          <ScalarProperty Name="addedip" ColumnName="addedip" />
+          <ScalarProperty Name="modifydate" ColumnName="modifydate" />
+          <ScalarProperty Name="modifyip" ColumnName="modifyip" />
+          <ScalarProperty Name="shippingcharge" ColumnName="shippingcharge" />
+          <ScalarProperty Name="minimumcharge" ColumnName="minimumcharge" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="areaselecteds">
+      <EntityTypeMapping TypeName="sabziappModel.areaselected">
+        <MappingFragment StoreEntitySet="areaselected">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="areaid" ColumnName="areaid" />
+          <ScalarProperty Name="dealerid" ColumnName="dealerid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="carts">
+      <EntityTypeMapping TypeName="sabziappModel.cart">
+        <MappingFragment StoreEntitySet="cart">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="custid" ColumnName="custid" />
+          <ScalarProperty Name="Proid" ColumnName="Proid" />
+          <ScalarProperty Name="priceid" ColumnName="priceid" />
+          <ScalarProperty Name="areaid" ColumnName="areaid" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="isspecial" ColumnName="isspecial" />
+          <ScalarProperty Name="instruction" ColumnName="instruction" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cities">
+      <EntityTypeMapping TypeName="sabziappModel.city">
+        <MappingFragment StoreEntitySet="city">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="visible" ColumnName="visible" />
+          <ScalarProperty Name="addeddate" ColumnName="addeddate" />
+          <ScalarProperty Name="addedip" ColumnName="addedip" />
+          <ScalarProperty Name="modifydate" ColumnName="modifydate" />
+          <ScalarProperty Name="modifyip" ColumnName="modifyip" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="currentversions">
+      <EntityTypeMapping TypeName="sabziappModel.currentversion">
+        <MappingFragment StoreEntitySet="currentversion">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="customers">
+      <EntityTypeMapping TypeName="sabziappModel.customer">
+        <MappingFragment StoreEntitySet="customer">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Landmark" ColumnName="Landmark" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Addeddate" ColumnName="Addeddate" />
+          <ScalarProperty Name="Addedip" ColumnName="Addedip" />
+          <ScalarProperty Name="Modifydate" ColumnName="Modifydate" />
+          <ScalarProperty Name="Modifyip" ColumnName="Modifyip" />
+          <ScalarProperty Name="numConfirmed" ColumnName="numConfirmed" />
+          <ScalarProperty Name="areaid" ColumnName="areaid" />
+          <ScalarProperty Name="deviceid" ColumnName="deviceid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dealers">
+      <EntityTypeMapping TypeName="sabziappModel.dealer">
+        <MappingFragment StoreEntitySet="dealers">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Landmark" ColumnName="Landmark" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Addeddate" ColumnName="Addeddate" />
+          <ScalarProperty Name="Addedip" ColumnName="Addedip" />
+          <ScalarProperty Name="Modifydate" ColumnName="Modifydate" />
+          <ScalarProperty Name="Modifyip" ColumnName="Modifyip" />
+          <ScalarProperty Name="numConfirmed" ColumnName="numConfirmed" />
+          <ScalarProperty Name="unread" ColumnName="unread" />
+          <ScalarProperty Name="SlotDescription" ColumnName="SlotDescription" />
+          <ScalarProperty Name="otherarea" ColumnName="otherarea" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dealersnotifications">
+      <EntityTypeMapping TypeName="sabziappModel.dealersnotification">
+        <MappingFragment StoreEntitySet="dealersnotification">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="dealerid" ColumnName="dealerid" />
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="addeddate" ColumnName="addeddate" />
+          <ScalarProperty Name="addedip" ColumnName="addedip" />
+          <ScalarProperty Name="Unread" ColumnName="Unread" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="deliveryslots">
+      <EntityTypeMapping TypeName="sabziappModel.deliveryslot">
+        <MappingFragment StoreEntitySet="deliveryslot">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="timeslot" ColumnName="timeslot" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="modifydate" ColumnName="modifydate" />
+          <ScalarProperty Name="modifyip" ColumnName="modifyip" />
+          <ScalarProperty Name="modifyby" ColumnName="modifyby" />
+          <ScalarProperty Name="totalorders" ColumnName="totalorders" />
+          <ScalarProperty Name="isactive" ColumnName="isactive" />
+          <ScalarProperty Name="Dealerid" ColumnName="Dealerid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dist_state">
+      <EntityTypeMapping TypeName="sabziappModel.dist_state">
+        <MappingFragment StoreEntitySet="dist_state">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="subid" ColumnName="subid" />
+          <ScalarProperty Name="visible" ColumnName="visible" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="emailtemplates">
+      <EntityTypeMapping TypeName="sabziappModel.emailtemplate">
+        <MappingFragment StoreEntitySet="emailtemplate">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="modifyip" ColumnName="modifyip" />
+          <ScalarProperty Name="modifydate" ColumnName="modifydate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="enquiries">
+      <EntityTypeMapping TypeName="sabziappModel.enquiry">
+        <MappingFragment StoreEntitySet="enquiry">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="fname" ColumnName="fname" />
+          <ScalarProperty Name="lname" ColumnName="lname" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="country" ColumnName="country" />
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="addeddate" ColumnName="addeddate" />
+          <ScalarProperty Name="addedip" ColumnName="addedip" />
+          <ScalarProperty Name="unread" ColumnName="unread" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="faqs">
+      <EntityTypeMapping TypeName="sabziappModel.faq">
+        <MappingFragment StoreEntitySet="faq">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Visible" ColumnName="Visible" />
+          <ScalarProperty Name="Question" ColumnName="Question" />
+          <ScalarProperty Name="Answer" ColumnName="Answer" />
+          <ScalarProperty Name="Catid" ColumnName="Catid" />
+          <ScalarProperty Name="sortorder" ColumnName="sortorder" />
+          <ScalarProperty Name="addeddate" ColumnName="addeddate" />
+          <ScalarProperty Name="addedip" ColumnName="addedip" />
+          <ScalarProperty Name="modifydate" ColumnName="modifydate" />
+          <ScalarProperty Name="modifyip" ColumnName="modifyip" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="faqcategories">
+      <EntityTypeMapping TypeName="sabziappModel.faqcategory">
+        <MappingFragment StoreEntitySet="faqcategory">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Visible" ColumnName="Visible" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="sortorder" ColumnName="sortorder" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="AddedIp" ColumnName="AddedIp" />
+          <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+          <ScalarProperty Name="ModifyIp" ColumnName="ModifyIp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="faqenquiries">
+      <EntityTypeMapping TypeName="sabziappModel.faqenquiry">
+        <MappingFragment StoreEntitySet="faqenquiry">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="addeddate" ColumnName="addeddate" />
+          <ScalarProperty Name="addedip" ColumnName="addedip" />
+          <ScalarProperty Name="unread" ColumnName="unread" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="holidays">
+      <EntityTypeMapping TypeName="sabziappModel.holiday">
+        <MappingFragment StoreEntitySet="holidays">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="addeddate" ColumnName="addeddate" />
+          <ScalarProperty Name="addedip" ColumnName="addedip" />
+          <ScalarProperty Name="modifydate" ColumnName="modifydate" />
+          <ScalarProperty Name="ModifyIp" ColumnName="ModifyIp" />
+          <ScalarProperty Name="holidaydate" ColumnName="holidaydate" />
+          <ScalarProperty Name="dealerid" ColumnName="dealerid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="homebanners">
+      <EntityTypeMapping TypeName="sabziappModel.homebanner">
+        <MappingFragment StoreEntitySet="homebanner">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="visible" ColumnName="visible" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="link" ColumnName="link" />
+          <ScalarProperty Name="sortorder" ColumnName="sortorder" />
+          <ScalarProperty Name="addeddate" ColumnName="addeddate" />
+          <ScalarProperty Name="addedip" ColumnName="addedip" />
+          <ScalarProperty Name="modifydate" ColumnName="modifydate" />
+          <ScalarProperty Name="modifyip" ColumnName="modifyip" />
+          <ScalarProperty Name="dealerid" ColumnName="dealerid" />
+          <ScalarProperty Name="ismainpage" ColumnName="ismainpage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="insidepages">
+      <EntityTypeMapping TypeName="sabziappModel.insidepage">
+        <MappingFragment StoreEntitySet="insidepage">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PageName" ColumnName="PageName" />
+          <ScalarProperty Name="PageIETitle" ColumnName="PageIETitle" />
+          <ScalarProperty Name="PageDesc" ColumnName="PageDesc" />
+          <ScalarProperty Name="Meta" ColumnName="Meta" />
+          <ScalarProperty Name="addedip" ColumnName="addedip" />
+          <ScalarProperty Name="addeddate" ColumnName="addeddate" />
+          <ScalarProperty Name="modifyip" ColumnName="modifyip" />
+          <ScalarProperty Name="modifydate" ColumnName="modifydate" />
+          <ScalarProperty Name="sortorder" ColumnName="sortorder" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="newslettercampaigns">
+      <EntityTypeMapping TypeName="sabziappModel.newslettercampaign">
+        <MappingFragment StoreEntitySet="newslettercampaign">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="fromEmail" ColumnName="fromEmail" />
+          <ScalarProperty Name="subject" ColumnName="subject" />
+          <ScalarProperty Name="body" ColumnName="body" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="addeddate" ColumnName="addeddate" />
+          <ScalarProperty Name="addedip" ColumnName="addedip" />
+          <ScalarProperty Name="modifydate" ColumnName="modifydate" />
+          <ScalarProperty Name="modifyip" ColumnName="modifyip" />
+          <ScalarProperty Name="subscriberCnt" ColumnName="subscriberCnt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="newslettergroups">
+      <EntityTypeMapping TypeName="sabziappModel.newslettergroup">
+        <MappingFragment StoreEntitySet="newslettergroup">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="addeddate" ColumnName="addeddate" />
+          <ScalarProperty Name="addedIp" ColumnName="addedIp" />
+          <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+          <ScalarProperty Name="ModifyIp" ColumnName="ModifyIp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="newslettersendhistories">
+      <EntityTypeMapping TypeName="sabziappModel.newslettersendhistory">
+        <MappingFragment StoreEntitySet="newslettersendhistory">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="CampaignId" ColumnName="CampaignId" />
+          <ScalarProperty Name="ToMail" ColumnName="ToMail" />
+          <ScalarProperty Name="ToName" ColumnName="ToName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="newslettersubscribers">
+      <EntityTypeMapping TypeName="sabziappModel.newslettersubscriber">
+        <MappingFragment StoreEntitySet="newslettersubscriber">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Visible" ColumnName="Visible" />
+          <ScalarProperty Name="groupid" ColumnName="groupid" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="AddedIp" ColumnName="AddedIp" />
+          <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+          <ScalarProperty Name="ModifyIp" ColumnName="ModifyIp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="newslettertemplates">
+      <EntityTypeMapping TypeName="sabziappModel.newslettertemplate">
+        <MappingFragment StoreEntitySet="newslettertemplate">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="addeddate" ColumnName="addeddate" />
+          <ScalarProperty Name="addedIp" ColumnName="addedIp" />
+          <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+          <ScalarProperty Name="ModifyIp" ColumnName="ModifyIp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="notifications">
+      <EntityTypeMapping TypeName="sabziappModel.notification">
+        <MappingFragment StoreEntitySet="notifications">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="addeddate" ColumnName="addeddate" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="dealerid" ColumnName="dealerid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="orderitems">
+      <EntityTypeMapping TypeName="sabziappModel.orderitem">
+        <MappingFragment StoreEntitySet="orderitems">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Ordid" ColumnName="Ordid" />
+          <ScalarProperty Name="pid" ColumnName="pid" />
+          <ScalarProperty Name="cat1id" ColumnName="cat1id" />
+          <ScalarProperty Name="cat2id" ColumnName="cat2id" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="HindiTitle" ColumnName="HindiTitle" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="Delivery" ColumnName="Delivery" />
+          <ScalarProperty Name="priceDesc" ColumnName="priceDesc" />
+          <ScalarProperty Name="specialInstruction" ColumnName="specialInstruction" />
+          <ScalarProperty Name="SpecialType" ColumnName="SpecialType" />
+          <ScalarProperty Name="itempriceid" ColumnName="itempriceid" />
+          <ScalarProperty Name="CGST" ColumnName="CGST" />
+          <ScalarProperty Name="SGST" ColumnName="SGST" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ordermasters">
+      <EntityTypeMapping TypeName="sabziappModel.ordermaster">
+        <MappingFragment StoreEntitySet="ordermaster">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="District" ColumnName="District" />
+          <ScalarProperty Name="Postcode" ColumnName="Postcode" />
+          <ScalarProperty Name="Landmark" ColumnName="Landmark" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="BName" ColumnName="BName" />
+          <ScalarProperty Name="BEmail" ColumnName="BEmail" />
+          <ScalarProperty Name="BAddress" ColumnName="BAddress" />
+          <ScalarProperty Name="BCity" ColumnName="BCity" />
+          <ScalarProperty Name="BState" ColumnName="BState" />
+          <ScalarProperty Name="BPostCode" ColumnName="BPostCode" />
+          <ScalarProperty Name="BLandmark" ColumnName="BLandmark" />
+          <ScalarProperty Name="BPhone" ColumnName="BPhone" />
+          <ScalarProperty Name="uid" ColumnName="uid" />
+          <ScalarProperty Name="Subtotal" ColumnName="Subtotal" />
+          <ScalarProperty Name="Grandtotal" ColumnName="Grandtotal" />
+          <ScalarProperty Name="Delivery" ColumnName="Delivery" />
+          <ScalarProperty Name="discount" ColumnName="discount" />
+          <ScalarProperty Name="Orderdate" ColumnName="Orderdate" />
+          <ScalarProperty Name="Orderip" ColumnName="Orderip" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+          <ScalarProperty Name="GiftCodeType" ColumnName="GiftCodeType" />
+          <ScalarProperty Name="ordernumber" ColumnName="ordernumber" />
+          <ScalarProperty Name="unread" ColumnName="unread" />
+          <ScalarProperty Name="Admincomments" ColumnName="Admincomments" />
+          <ScalarProperty Name="AutoProcessDone" ColumnName="AutoProcessDone" />
+          <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+          <ScalarProperty Name="ModifyIp" ColumnName="ModifyIp" />
+          <ScalarProperty Name="DiscountDESC" ColumnName="DiscountDESC" />
+          <ScalarProperty Name="FromWallet" ColumnName="FromWallet" />
+          <ScalarProperty Name="Express" ColumnName="Express" />
+          <ScalarProperty Name="DeliveryOn" ColumnName="DeliveryOn" />
+          <ScalarProperty Name="paymentmode" ColumnName="paymentmode" />
+          <ScalarProperty Name="Ordertime" ColumnName="Ordertime" />
+          <ScalarProperty Name="dealerid" ColumnName="dealerid" />
+          <ScalarProperty Name="israting" ColumnName="israting" />
+          <ScalarProperty Name="rating" ColumnName="rating" />
+          <ScalarProperty Name="review" ColumnName="review" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pricemanagers">
+      <EntityTypeMapping TypeName="sabziappModel.pricemanager">
+        <MappingFragment StoreEntitySet="pricemanager">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="APrice" ColumnName="APrice" />
+          <ScalarProperty Name="DPrice" ColumnName="DPrice" />
+          <ScalarProperty Name="productid" ColumnName="productid" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="Pqty" ColumnName="Pqty" />
+          <ScalarProperty Name="Rlevel" ColumnName="Rlevel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="products">
+      <EntityTypeMapping TypeName="sabziappModel.product">
+        <MappingFragment StoreEntitySet="product">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="HindiTitle" ColumnName="HindiTitle" />
+          <ScalarProperty Name="cat1id" ColumnName="cat1id" />
+          <ScalarProperty Name="cat2id" ColumnName="cat2id" />
+          <ScalarProperty Name="DESCabout" ColumnName="DESCabout" />
+          <ScalarProperty Name="DESCbenifits" ColumnName="DESCbenifits" />
+          <ScalarProperty Name="DESChowtouse" ColumnName="DESChowtouse" />
+          <ScalarProperty Name="UOM" ColumnName="UOM" />
+          <ScalarProperty Name="visible" ColumnName="visible" />
+          <ScalarProperty Name="featured" ColumnName="featured" />
+          <ScalarProperty Name="sortorder" ColumnName="sortorder" />
+          <ScalarProperty Name="addeddate" ColumnName="addeddate" />
+          <ScalarProperty Name="addedip" ColumnName="addedip" />
+          <ScalarProperty Name="modifydate" ColumnName="modifydate" />
+          <ScalarProperty Name="modifyip" ColumnName="modifyip" />
+          <ScalarProperty Name="cityid" ColumnName="cityid" />
+          <ScalarProperty Name="dealerid" ColumnName="dealerid" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="productcategory1">
+      <EntityTypeMapping TypeName="sabziappModel.productcategory1">
+        <MappingFragment StoreEntitySet="productcategory1">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="visible" ColumnName="visible" />
+          <ScalarProperty Name="sortorder" ColumnName="sortorder" />
+          <ScalarProperty Name="addeddate" ColumnName="addeddate" />
+          <ScalarProperty Name="addedip" ColumnName="addedip" />
+          <ScalarProperty Name="modifydate" ColumnName="modifydate" />
+          <ScalarProperty Name="modifyip" ColumnName="modifyip" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="dealerid" ColumnName="dealerid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="productcategory2">
+      <EntityTypeMapping TypeName="sabziappModel.productcategory2">
+        <MappingFragment StoreEntitySet="productcategory2">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="cat1id" ColumnName="cat1id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="visible" ColumnName="visible" />
+          <ScalarProperty Name="addeddate" ColumnName="addeddate" />
+          <ScalarProperty Name="addedip" ColumnName="addedip" />
+          <ScalarProperty Name="modifydate" ColumnName="modifydate" />
+          <ScalarProperty Name="modifyip" ColumnName="modifyip" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="dealerid" ColumnName="dealerid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="redeedmvippoints">
+      <EntityTypeMapping TypeName="sabziappModel.redeedmvippoint">
+        <MappingFragment StoreEntitySet="redeedmvippoint">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="issuedate" ColumnName="issuedate" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="Addedip" ColumnName="Addedip" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="refundhistories">
+      <EntityTypeMapping TypeName="sabziappModel.refundhistory">
+        <MappingFragment StoreEntitySet="refundhistory">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="uid" ColumnName="uid" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="ordid" ColumnName="ordid" />
+          <ScalarProperty Name="addeddate" ColumnName="addeddate" />
+          <ScalarProperty Name="addedip" ColumnName="addedip" />
+          <ScalarProperty Name="canceled" ColumnName="canceled" />
+          <ScalarProperty Name="email" ColumnName="email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="searchhistories">
+      <EntityTypeMapping TypeName="sabziappModel.searchhistory">
+        <MappingFragment StoreEntitySet="searchhistory">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="word" ColumnName="word" />
+          <ScalarProperty Name="searchdate" ColumnName="searchdate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sendnewsletterschedulers">
+      <EntityTypeMapping TypeName="sabziappModel.sendnewsletterscheduler">
+        <MappingFragment StoreEntitySet="sendnewsletterscheduler">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="toemail" ColumnName="toemail" />
+          <ScalarProperty Name="campaignid" ColumnName="campaignid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="shippingcharges">
+      <EntityTypeMapping TypeName="sabziappModel.shippingcharge">
+        <MappingFragment StoreEntitySet="shippingcharges">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="shippingcharge1" ColumnName="shippingcharge" />
+          <ScalarProperty Name="modifydate" ColumnName="modifydate" />
+          <ScalarProperty Name="modifyip" ColumnName="modifyip" />
+          <ScalarProperty Name="minimumamount" ColumnName="minimumamount" />
+          <ScalarProperty Name="area" ColumnName="area" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="addeddate" ColumnName="addeddate" />
+          <ScalarProperty Name="addedip" ColumnName="addedip" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="siteprofiles">
+      <EntityTypeMapping TypeName="sabziappModel.siteprofile">
+        <MappingFragment StoreEntitySet="siteprofile">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="mshost" ColumnName="mshost" />
+          <ScalarProperty Name="msusername" ColumnName="msusername" />
+          <ScalarProperty Name="mspass" ColumnName="mspass" />
+          <ScalarProperty Name="contemail" ColumnName="contemail" />
+          <ScalarProperty Name="contccemail" ColumnName="contccemail" />
+          <ScalarProperty Name="contbccemail" ColumnName="contbccemail" />
+          <ScalarProperty Name="addedip" ColumnName="addedip" />
+          <ScalarProperty Name="addeddate" ColumnName="addeddate" />
+          <ScalarProperty Name="modifyip" ColumnName="modifyip" />
+          <ScalarProperty Name="modifydate" ColumnName="modifydate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="specialpricemanagers">
+      <EntityTypeMapping TypeName="sabziappModel.specialpricemanager">
+        <MappingFragment StoreEntitySet="specialpricemanager">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="APrice" ColumnName="APrice" />
+          <ScalarProperty Name="DPrice" ColumnName="DPrice" />
+          <ScalarProperty Name="productid" ColumnName="productid" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="specialproducts">
+      <EntityTypeMapping TypeName="sabziappModel.specialproduct">
+        <MappingFragment StoreEntitySet="specialproduct">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="HindiTitle" ColumnName="HindiTitle" />
+          <ScalarProperty Name="cat1id" ColumnName="cat1id" />
+          <ScalarProperty Name="cat2id" ColumnName="cat2id" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="UOM" ColumnName="UOM" />
+          <ScalarProperty Name="visible" ColumnName="visible" />
+          <ScalarProperty Name="featured" ColumnName="featured" />
+          <ScalarProperty Name="sortorder" ColumnName="sortorder" />
+          <ScalarProperty Name="addeddate" ColumnName="addeddate" />
+          <ScalarProperty Name="addedip" ColumnName="addedip" />
+          <ScalarProperty Name="modifydate" ColumnName="modifydate" />
+          <ScalarProperty Name="modifyip" ColumnName="modifyip" />
+          <ScalarProperty Name="offerdate" ColumnName="offerdate" />
+          <ScalarProperty Name="cityid" ColumnName="cityid" />
+          <ScalarProperty Name="Specialweight" ColumnName="Specialweight" />
+          <ScalarProperty Name="dealerid" ColumnName="dealerid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="specialproductimages">
+      <EntityTypeMapping TypeName="sabziappModel.specialproductimage">
+        <MappingFragment StoreEntitySet="specialproductimages">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="productid" ColumnName="productid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="specialstockmanagers">
+      <EntityTypeMapping TypeName="sabziappModel.specialstockmanager">
+        <MappingFragment StoreEntitySet="specialstockmanager">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Areaid" ColumnName="Areaid" />
+          <ScalarProperty Name="productid" ColumnName="productid" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="reorderlevel" ColumnName="reorderlevel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="stockmanagers">
+      <EntityTypeMapping TypeName="sabziappModel.stockmanager">
+        <MappingFragment StoreEntitySet="stockmanager">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Areaid" ColumnName="Areaid" />
+          <ScalarProperty Name="productid" ColumnName="productid" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="reorderlevel" ColumnName="reorderlevel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="subscriptions">
+      <EntityTypeMapping TypeName="sabziappModel.subscription">
+        <MappingFragment StoreEntitySet="subscription">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="month" ColumnName="month" />
+          <ScalarProperty Name="days" ColumnName="days" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="Visible" ColumnName="Visible" />
+          <ScalarProperty Name="addeddate" ColumnName="addeddate" />
+          <ScalarProperty Name="addedip" ColumnName="addedip" />
+          <ScalarProperty Name="modifydate" ColumnName="modifydate" />
+          <ScalarProperty Name="modifyip" ColumnName="modifyip" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="subscriptionselecteds">
+      <EntityTypeMapping TypeName="sabziappModel.subscriptionselected">
+        <MappingFragment StoreEntitySet="subscriptionselected">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="dealerid" ColumnName="dealerid" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="month" ColumnName="month" />
+          <ScalarProperty Name="days" ColumnName="days" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="enddate" ColumnName="enddate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="supporttypes">
+      <EntityTypeMapping TypeName="sabziappModel.supporttype">
+        <MappingFragment StoreEntitySet="supporttype">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="addeddate" ColumnName="addeddate" />
+          <ScalarProperty Name="addedip" ColumnName="addedip" />
+          <ScalarProperty Name="visible" ColumnName="visible" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="sabziappModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="taxes">
+      <EntityTypeMapping TypeName="sabziappModel.tax">
+        <MappingFragment StoreEntitySet="tax">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="ProductTax" ColumnName="ProductTax" />
+          <ScalarProperty Name="RestTax" ColumnName="RestTax" />
+          <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+          <ScalarProperty Name="ModifyIp" ColumnName="ModifyIp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="testimonials">
+      <EntityTypeMapping TypeName="sabziappModel.testimonial">
+        <MappingFragment StoreEntitySet="testimonial">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Visible" ColumnName="Visible" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Position" ColumnName="Position" />
+          <ScalarProperty Name="Company" ColumnName="Company" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="sortorder" ColumnName="sortorder" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="AddedIp" ColumnName="AddedIp" />
+          <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+          <ScalarProperty Name="ModifyIp" ColumnName="ModifyIp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ticketdetails">
+      <EntityTypeMapping TypeName="sabziappModel.ticketdetail">
+        <MappingFragment StoreEntitySet="ticketdetails">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ticketid" ColumnName="ticketid" />
+          <ScalarProperty Name="comments" ColumnName="comments" />
+          <ScalarProperty Name="replytype" ColumnName="replytype" />
+          <ScalarProperty Name="Addeddate" ColumnName="Addeddate" />
+          <ScalarProperty Name="Addedip" ColumnName="Addedip" />
+          <ScalarProperty Name="Modifydate" ColumnName="Modifydate" />
+          <ScalarProperty Name="Modifyip" ColumnName="Modifyip" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tickets">
+      <EntityTypeMapping TypeName="sabziappModel.ticket">
+        <MappingFragment StoreEntitySet="tickets">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="customerid" ColumnName="customerid" />
+          <ScalarProperty Name="subject" ColumnName="subject" />
+          <ScalarProperty Name="ticketid" ColumnName="ticketid" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="replystatus" ColumnName="replystatus" />
+          <ScalarProperty Name="supportfor" ColumnName="supportfor" />
+          <ScalarProperty Name="Addeddate" ColumnName="Addeddate" />
+          <ScalarProperty Name="Addedip" ColumnName="Addedip" />
+          <ScalarProperty Name="closedate" ColumnName="closedate" />
+          <ScalarProperty Name="reopendate" ColumnName="reopendate" />
+          <ScalarProperty Name="adminunread" ColumnName="adminunread" />
+          <ScalarProperty Name="Dealerunread" ColumnName="Dealerunread" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vouchers">
+      <EntityTypeMapping TypeName="sabziappModel.voucher">
+        <MappingFragment StoreEntitySet="voucher">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="VoucherAmount" ColumnName="VoucherAmount" />
+          <ScalarProperty Name="MinimumAmount" ColumnName="MinimumAmount" />
+          <ScalarProperty Name="PublishDate" ColumnName="PublishDate" />
+          <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+          <ScalarProperty Name="Towhom" ColumnName="Towhom" />
+          <ScalarProperty Name="AdminNote" ColumnName="AdminNote" />
+          <ScalarProperty Name="addeddate" ColumnName="addeddate" />
+          <ScalarProperty Name="addedIp" ColumnName="addedIp" />
+          <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+          <ScalarProperty Name="ModifyIp" ColumnName="ModifyIp" />
+          <ScalarProperty Name="Sent" ColumnName="Sent" />
+          <ScalarProperty Name="SenttoAll" ColumnName="SenttoAll" />
+          <ScalarProperty Name="areaid" ColumnName="areaid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="voucherusers">
+      <EntityTypeMapping TypeName="sabziappModel.voucheruser">
+        <MappingFragment StoreEntitySet="voucheruser">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="VoucherID" ColumnName="VoucherID" />
+          <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+          <ScalarProperty Name="Used" ColumnName="Used" />
+          <ScalarProperty Name="EMailSend" ColumnName="EMailSend" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wallets">
+      <EntityTypeMapping TypeName="sabziappModel.wallet">
+        <MappingFragment StoreEntitySet="wallet">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="uid" ColumnName="uid" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="modifydate" ColumnName="modifydate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sampleproducts">
+      <EntityTypeMapping TypeName="sabziappModel.sampleproduct">
+        <MappingFragment StoreEntitySet="sampleproduct">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="HindiTitle" ColumnName="HindiTitle" />
+          <ScalarProperty Name="cat1id" ColumnName="cat1id" />
+          <ScalarProperty Name="cat2id" ColumnName="cat2id" />
+          <ScalarProperty Name="DESCabout" ColumnName="DESCabout" />
+          <ScalarProperty Name="DESCbenifits" ColumnName="DESCbenifits" />
+          <ScalarProperty Name="DESChowtouse" ColumnName="DESChowtouse" />
+          <ScalarProperty Name="UOM" ColumnName="UOM" />
+          <ScalarProperty Name="visible" ColumnName="visible" />
+          <ScalarProperty Name="featured" ColumnName="featured" />
+          <ScalarProperty Name="sortorder" ColumnName="sortorder" />
+          <ScalarProperty Name="addeddate" ColumnName="addeddate" />
+          <ScalarProperty Name="addedip" ColumnName="addedip" />
+          <ScalarProperty Name="modifydate" ColumnName="modifydate" />
+          <ScalarProperty Name="modifyip" ColumnName="modifyip" />
+          <ScalarProperty Name="cityid" ColumnName="cityid" />
+          <ScalarProperty Name="dealerid" ColumnName="dealerid" />
+          <ScalarProperty Name="type" ColumnName="type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sampleproductimages">
+      <EntityTypeMapping TypeName="sabziappModel.sampleproductimage">
+        <MappingFragment StoreEntitySet="sampleproductimages">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="productid" ColumnName="productid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

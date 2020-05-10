@@ -1,0 +1,207 @@
+﻿
+@{
+    ViewBag.Title = "Generate Voucher";
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+@model veggiesapp.Models.voucher
+
+<style>
+    .product-colors input[type=checkbox], input[type=radio] {
+        display: inline-block !important;
+    }
+</style>
+
+<div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="page-header">
+            <h2 class="pageheader-title">Voucher Management</h2>
+            <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
+            <div class="page-breadcrumb">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Voucher Management</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Generate Voucher</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="card">
+            <h5 class="card-header" style="background-color:#71748d;color:white">Add Voucher</h5>
+            <div class="card-body">
+                @using (Html.BeginForm("generateintervoucher", "Voucher", FormMethod.Post, new { @onsubmit = "return validation()" }))
+                {
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <label id="lblPath" style="visibility:hidden"></label>
+                            <div class="form-group">
+                                <label>City : </label>
+                                @if (ViewBag.ctname1 != null)
+                                {
+                                    <select id="comboboxcity" class="form-control" style="width:150px;">
+                                        <option value="-1">Select City</option>
+                                        @foreach (var city in ViewBag.cities)
+                                        {
+                                            if (city.Name == @ViewBag.ctname1)
+                                            {
+                                                <option selected="selected">@ViewBag.ctname1</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@city.id">@city.Name</option>
+                                            }
+                                        }
+                                    </select>
+                                }
+                                else
+                                {
+                                    <select id="comboboxcity" class="form-control" style="width:150px;">
+                                        <option selected="selected" value="-1">Select City</option>
+                                        @foreach (var city in ViewBag.cities)
+                                        {
+                                            <option value="@city.id">@city.Name</option>
+                                        }
+                                    </select>
+                                }
+                                <br />
+                                <span id="dropdownval" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group" id="chkboxvalidation">
+                                <Label>Areas</Label>
+                                @if (Model.check != null)
+                                {
+                                    for (int i = 0; i < Model.check.Count; i++)
+                                    {
+                                        <br />
+                                        @Html.CheckBoxFor(m => m.check[i].ischecked, new { @id = "comboboxareastest" })
+                                        @Model.check[i].areaname
+                                        @Html.HiddenFor(m => m.check[i].areaid)
+                                    }
+                                }
+                                <br />
+                                <span id="chkbox" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <br />
+                                <label>Voucher Code</label>
+                                @Html.TextBoxFor(m => m.Code, new { @class = "form-control", @style = "width:150px;" })
+                                @Html.ValidationMessageFor(m => m.Code, null, new { @class = "text-danger" })
+                            </div>
+                            <br />
+
+                            <div class="form-group">
+                                <label>Type</label>
+                                <br />
+                                @Html.RadioButtonFor(m => m.Type, 1, new { @checked = true })
+                                @Html.Label("Value Based")<br />
+                                @Html.RadioButtonFor(m => m.Type, 0)
+                                @Html.Label("Percent Based")
+                            </div>
+                            <br />
+
+                            <div class="form-group">
+                                <label>Discount Amount (<span id="ctl00_ContentPlaceHolder1_ltr_Type">Rs</span>)</label><br />
+                                @Html.TextBoxFor(m => m.VoucherAmount, new { @class = "form-control", @style = "width:150px;" })
+                                @Html.ValidationMessageFor(m => m.VoucherAmount, null, new { @class = "text-danger" })
+                            </div>
+                            <br />
+
+                            <div class="form-group">
+                                <label>Minimum Shopping Amount (Rs)</label><br />
+                                @Html.TextBoxFor(m => m.MinimumAmount, new { @class = "form-control", @style = "width:150px;" })
+                                @Html.ValidationMessageFor(m => m.MinimumAmount, null, new { @class = "text-danger" })
+                            </div>
+                            <br />
+
+                            <div class="form-group">
+                                <label>Issue Date</label>
+                                <div class="input-group">
+                                    @Html.TextBoxFor(m => m.PublishDate, new { @class = "datepicker" })
+                                    @Html.ValidationMessageFor(m => m.PublishDate, null, new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <br />
+
+                            <div class="form-group">
+                                <label>Expiry Date</label><br />
+                                <div class="input-group">
+                                    @Html.TextBoxFor(m => m.ExpiryDate, new { @class = "datepicker" })
+                                    @Html.ValidationMessageFor(m => m.ExpiryDate, null, new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <br />
+
+                            @*<div class="form-group">
+                                <label>To Whom</label>
+                                <br />
+                                @Html.RadioButtonFor(m => m.Towhom, 0, new { @checked = true })
+                                @Html.Label("Registered Customer")<br />
+                                @Html.RadioButtonFor(m => m.Towhom, 1)
+                                @Html.Label("All Customer")
+                            </div>*@
+                            <br />
+
+                            <div class="form-group">
+                                <label>Admin Note</label><br />
+                                @Html.TextAreaFor(m => m.AdminNote, new { @rows = "2", @cols = "20", @class = "form-control big" })
+                                <hr />
+                                <button id="btnAdd" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+     $('#comboboxcity').on('change', function () {
+
+             var cityid = $('#comboboxcity option:selected').val();
+            window.location.href = "@TempData["path"].ToString()" + cityid;
+        });
+    });
+
+    function validation() {
+        var ctid = $('#comboboxcity option:selected').val();
+
+        if (ctid == -1) {
+            document.getElementById("dropdownval").innerHTML = "Select City";
+            return false;
+        }
+        else {
+            var checked_checkboxes = $("#chkboxvalidation input[type=checkbox]:checked");
+            if (checked_checkboxes.length == 0) {
+                document.getElementById("chkbox").innerHTML = "Atleast 1 area should be selected";
+                return false;
+            }
+            else {
+                document.getElementById("chkbox").innerHTML = "";
+                return true;
+            }
+        }
+    }
+
+</script>
+
+<script>
+    $(document).ready(function () {
+        $('.datepicker').datepicker({
+            format: 'dd/mm/yyyy',
+            changeMonth: true,
+            changeYear: true
+        });
+    });
+</script>

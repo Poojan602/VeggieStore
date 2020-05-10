@@ -1,0 +1,142 @@
+﻿
+@{
+    ViewBag.Title = "editarea";
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+
+
+@model veggiesapp.Models.area
+
+<style>
+    .product-colors input[type=checkbox], input[type=radio] {
+        display: inline-block !important;
+    }
+</style>
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#dropdown').on('change', function () {
+            var cityid = $('#dropdown option:selected').val();
+            $('#txtCityId').val(cityid);
+        });
+    });
+</script>
+
+
+<div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="page-header">
+            <h2 class="pageheader-title">Location Management</h2>
+            <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
+            <div class="page-breadcrumb">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Location Management</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Areas</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!-- horizontal form -->
+    <!-- ============================================================== -->
+    <div class="col-12">
+        <div class="card">
+            <h5 class="card-header" style="background-color:#71748d;color:white">Edit Area</h5>
+            <div class="card-body">
+                @using (Html.BeginForm("updatearea", "Location", FormMethod.Post, new { @onsubmit = "return validation()" }))
+                {
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    @Html.HiddenFor(m => m.id)
+                    <div class="form-group" style="margin-left:10px">
+                        <label>Display on Front-End?</label>
+                        <br />
+                        @Html.RadioButtonFor(m => m.visible, true)
+                        @Html.Label("Yes", new { @style = "color:green" })<br />
+                        @Html.RadioButtonFor(m => m.visible, false)
+                        @Html.Label("No", new { @style = "color:red" })
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-3">
+                            <label for="inputEmail2" class="col-3 col-lg-2 col-form-label text-left">City</label>
+                        </div>
+                        <div class="col-5">
+                            @Html.HiddenFor(m => m.cityid, new { @id = "txtCityId" })
+                            <select id="dropdown" , class="form-control">
+                                <option value="-1">Select City</option>
+                                @foreach (var ct in ViewBag.citynames)
+                                {
+                                    if (@ct.id == Model.cityid)
+                                    {
+                                        <option value="@ct.id" selected>@ct.Name</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@ct.id">@ct.Name</option>
+                                    }
+                                }
+                            </select>
+                            <span id="dropdownval" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-3">
+                            <label for="inputEmail2" class="col-3 col-lg-2 col-form-label text-left">Area</label>
+                        </div>
+                        <div class="col-5">
+                            @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Name, null, new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-3">
+                            <label for="inputEmail2" class="col-3 col-lg-2 col-form-label text-left">Minimun Charge</label>
+                        </div>
+                        <div class="col-5">
+                            @Html.TextBoxFor(m => m.minimumcharge, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.minimumcharge, null, new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-3">
+                            <label for="inputEmail2" class="col-3 col-lg-2 col-form-label text-left">Shipping Charge</label>
+                        </div>
+                        <div class="col-5">
+                            @Html.TextBoxFor(m => m.shippingcharge, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.shippingcharge, null, new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row pt-2 pt-sm-2 mt-1">
+                        <div class="">
+                            <p style="margin-left: 20px;">
+                                <button type="submit" class="btn btn-space btn-primary">Update</button>
+                                <a href="@Url.Action("viewarea","Location")"><input type="button" class="btn btn-space btn-primary" value="Cancel" /></a>
+                            </p>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function validation() {
+        var ctid = $('#dropdown option:selected').val();
+        if (ctid == -1) {
+            document.getElementById("dropdownval").innerHTML = "Select City";
+            return false;
+        }
+        else {
+            document.getElementById("dropdownval").innerHTML = "";
+            return true;
+        }
+    }
+</script>

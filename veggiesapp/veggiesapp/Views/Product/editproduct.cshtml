@@ -1,0 +1,220 @@
+﻿
+@{
+    ViewBag.Title = "editproduct";
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+
+@model veggiesapp.Models.product
+
+<style>
+    .product-colors input[type=checkbox], input[type=radio] {
+        display: inline-block !important;
+    }
+</style>
+
+<div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="page-header">
+            <h2 class="pageheader-title">Product Management</h2>
+            <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
+            <div class="page-breadcrumb">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Product Management</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Edit Product</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="card">
+            <h5 class="card-header" style="background-color:#71748d;color:white">Add Product Details</h5>
+            <div class="card-body">
+                @using (Html.BeginForm("updateproduct", "Product", FormMethod.Post, new { enctype = "multipart/form-data", @onchange = "return validation()" }))
+                {
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Display on Front-End?</label>
+                                <div class="frontvisible">
+                                    <span id="ctl00_ContentPlaceHolder1_rbl_Visible">
+                                        @Html.RadioButtonFor(m => m.visible, true)
+                                        <label style="color:green">Yes</label>&nbsp;
+                                        @Html.RadioButtonFor(m => m.visible, false)
+                                        <label style="color:red">No</label>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Display as Featured<small>&nbsp;(on home page)</small>&nbsp;?</label>
+                                <div class="frontvisible">
+                                    <span id="ctl00_ContentPlaceHolder1_rbl_Featured">
+                                        @Html.RadioButtonFor(m => m.featured, true)
+                                        <label style="color:green">Yes</label>&nbsp;
+                                        @Html.RadioButtonFor(m => m.featured, false)
+                                        <label style="color:red">No</label>
+                                    </span>
+                                </div>
+                            </div>
+                            <div>
+                                @Html.HiddenFor(m => m.id)
+                                @Html.HiddenFor(m => m.cat1id)
+                                <div class="form-group">
+                                    <label>Product Category</label><br />
+                                    <label style="color:black">@ViewBag.cat1name</label>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Product Sub Category</label><br />
+
+                                    @if (ViewBag.cat2name != null)
+                                    {
+                                        <select id="dropdown2" class="form-control" style="width:150px;">
+                                            <option value="-1">Select Sub Category</option>
+                                            @foreach (var cat2 in ViewBag.cat2list)
+                                            {
+                                                if (cat2.name == ViewBag.cat2name)
+                                                {
+                                                    <option selected="selected" value="@ViewBag.cat2id">@ViewBag.cat2name</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@cat2.id">@cat2.name</option>
+                                                }
+                                            }
+                                        </select>
+                                    }
+                                    else
+                                    {
+                                        <select id="dropdown2" class="form-control" style="width:150px;">
+                                            <option selected="selected" value="-1">Select Sub Category</option>
+                                            @foreach (var cat2 in ViewBag.cat2list)
+                                            {
+                                                <option value="@cat2.id">@cat2.name</option>
+                                            }
+                                        </select>
+                                    }
+                                    <br />
+                                    <span id="dropdownval2" class="text-danger"></span>
+                                    @Html.HiddenFor(m => m.cat2id, new { @id = "txtcat2Id" })
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Product Title</label>
+                                @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Title, null, new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                <label>Product Title (Hindi) </label>
+                                @Html.TextBoxFor(m => m.HindiTitle, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.HindiTitle, null, new { @class = "text-danger" })
+                            </div>
+                            <br>
+
+                            <div class="form-group">
+                                <label>About Description</label>
+                                @Html.TextAreaFor(m => m.DESCabout, new { @rows = 2, @cols = 20, @class = "form-control" })
+                            </div>
+                            <div class="form-group">
+                                <label>Benifits Description</label>
+                                @Html.TextAreaFor(m => m.DESCbenifits, new { @rows = 2, @cols = 20, @class = "form-control" })
+                            </div>
+                            <div class="form-group">
+                                <label>How to use Description</label>
+                                @Html.TextAreaFor(m => m.DESChowtouse, new { @rows = 2, @cols = 20, @class = "form-control" })
+                            </div>
+
+                            <div class="form-group">
+                                <hr>
+                                <input type="submit" value="Submit" class="btn btn-primary">
+                                <input type="button" value="Cancel" onclick="return confirm('are you sure you want to cancel this process');" class="btn btn-primary" >
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <small>
+                                <label>Note:</label><br>
+                                [File with .jpg, .gif, .png, .jpeg, .bmp extentions / formats only.]<br>
+                                [Maximum Image Size: 5 MB]<br>
+                                [Uploaded Images should be in recommand resolution as mentioned below.]
+                            </small><br>
+                            <hr>
+
+                            <div class="form-group">
+                                <label>Product Images</label>
+                                <br>
+                                <small>[Recommended Dimension - Width : 410px - Height :408px]</small><br /><br />
+                                &nbsp;
+                                <img src="@Html.DisplayFor(m => m.Image)" style="padding-bottom: 20px; height:200px; width:250px" class="img-responsive">
+                                <br />
+                                <input type="file" id="file" name="postedFile" onchange="checkFileDetails()" accept='image/jpeg,image/gif,image/png,image/bmp,image/jpg,image/pdf' />
+                                <span id="input" class="text-danger"></span>
+                            </div>
+                            <br />
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#dropdown2').on('change', function () {
+
+            var cat2id = $('#dropdown2 option:selected').val();
+            $('#txtcat2Id').val(cat2id);
+        });
+    });
+</script>
+
+
+<script>
+    function checkFileDetails() {
+
+        var fi = document.getElementById('file');
+        if (fi.files.length > 0) {
+
+            var fileName, fileExtension;
+
+            fileName = fi.files[0].name;
+            fileExtension = fileName.replace(/^.*\./, '');
+
+            if (fileExtension == 'png' || fileExtension == 'jpg' || fileExtension == 'jpeg' || fileExtension == 'gif' || fileExtension == 'bmp' || fileExtension == 'pdf') {
+
+                if (fi.files[0].size > 1024 * 1024 * 5) {
+                    document.getElementById("input").innerHTML = "Image Size should be less than 5 MB!";
+                    document.getElementById("file").value = "";
+                    return false;
+                }
+            }
+            else {
+                document.getElementById("input").innerHTML = "Select Image with appropriate extension";
+                document.getElementById("file").value = "";
+                return false;
+            }
+        }
+    }
+
+    function validation() {
+        var cat2id = $('#dropdown2 option:selected').val();
+
+        if (cat2id == -1) {
+            document.getElementById("dropdownval2").innerHTML = "Select Category 2";
+            return false;
+        }
+        else {
+            document.getElementById("dropdownval2").innerHTML = "";
+            return true;
+        }
+    }
+</script>

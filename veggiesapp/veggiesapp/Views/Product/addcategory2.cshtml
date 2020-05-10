@@ -1,0 +1,162 @@
+﻿
+@{
+    ViewBag.Title = "addcategory2";
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+
+@model veggiesapp.Models.productcategory2
+
+<style>
+    .product-colors input[type=checkbox], input[type=radio] {
+        display: inline-block !important;
+    }
+</style>
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#dropdown').on('change', function () {
+            var cat1id = $('#dropdown option:selected').val();
+            $('#txtcat1Id').val(cat1id);
+        });
+    });
+</script>
+
+<div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="page-header">
+            <h2 class="pageheader-title">Product Management</h2>
+            <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
+            <div class="page-breadcrumb">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Product Management</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Add Product Category 2</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="card">
+            <h5 class="card-header" style="background-color:#71748d;color:white">Add Product Category 2</h5>
+            <div class="card-body">
+                @using (Html.BeginForm("addintercategory2", "Product", FormMethod.Post, new { enctype = "multipart/form-data", @onsubmit = "return !!(checkinput() & validation());" }))
+                {
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label>Display on Front End?</label>
+                                <div class="frontvisible">
+                                    @Html.RadioButtonFor(m => m.visible, true, new { @checked = true })
+                                    @Html.Label("Yes", new { @style = "color:green" })<br />
+                                    @Html.RadioButtonFor(m => m.visible, false)
+                                    @Html.Label("No", new { @style = "color:red" })
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="inputEmail2" class="col-3 col-lg-2 col-form-label text-left">Select 1st Level Category</label>
+                                <div class="col-12">
+                                    @Html.HiddenFor(m => m.cat1id, new { @id = "txtcat1Id" })
+                                    <select id="dropdown" class="form-control">
+                                        <option value="-1">Select Category 1</option>
+                                        @foreach (var ct1 in ViewBag.cat1names)
+                                        {
+                                            <option value="@ct1.id">@ct1.name</option>
+                                        }
+                                    </select>
+                                    <span id="dropdownval" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="form-group">
+                                <label>Category Name</label>
+                                @Html.TextBoxFor(m => m.name, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.name, null, new { @class = "text-danger" })
+                            </div>
+                            <br />
+                            <div class="form-group">
+                                <label style="text-decoration:solid; color:black">Image</label>
+                                <br />
+                                <small>
+                                    [File with .jpg, .gif, .png, .jpeg, .bmp, .pdf extentions / formats only.]<br />
+                                    [Maximum Image Size: 5 MB]<br />
+                                    [Recommended Dimension - Width : 862px - Height :375px]
+                                </small><br /><br /><br />
+                                <input type="file" id="file" name="postedFile" onchange="checkFileDetails()" accept='image/jpeg,image/gif,image/png,image/bmp,image/jpg,image/pdf'/>
+                                <span id="input" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <hr />
+                                <input type="submit" value="Submit" id="sbmt" class="btn btn-primary" />
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function checkFileDetails() {
+
+        var fi = document.getElementById('file');
+        if (fi.files.length > 0) {
+
+            var fileName, fileExtension;
+
+            fileName = fi.files[0].name;
+            fileExtension = fileName.replace(/^.*\./, '');
+
+            if (fileExtension == 'png' || fileExtension == 'jpg' || fileExtension == 'jpeg' || fileExtension == 'gif' || fileExtension == 'bmp' || fileExtension == 'pdf') {
+
+                if (fi.files[0].size > 1024 * 1024 * 5) {
+                    document.getElementById("input").innerHTML = "Image Size should be less than 5 MB!";
+                    document.getElementById("file").value = "";
+                    return false;
+                }
+            }
+            else {
+                document.getElementById("input").innerHTML = "Select Image with appropriate extension";
+                document.getElementById("file").value = "";
+                return false;
+            }
+        }
+    }
+
+    function checkinput() {
+
+        var file = document.getElementById('file');
+
+        if (file.files.length > 0) {
+            document.getElementById("input").innerHTML = "";
+            return true;
+        }
+        else {
+            document.getElementById("input").innerHTML = "please Select an image";
+            document.getElementById("file").value = "";
+            return false;
+        }
+    }
+
+    function validation() {
+        var cat1id = $('#dropdown option:selected').val();
+
+        if (cat1id == -1) {
+            document.getElementById("dropdownval").innerHTML = "Select Category 1";
+            return false;
+        }
+        else {
+            document.getElementById("dropdownval").innerHTML = "";
+            return true;
+        }
+    }
+</script>

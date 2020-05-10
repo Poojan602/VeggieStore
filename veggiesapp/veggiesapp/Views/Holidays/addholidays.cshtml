@@ -1,0 +1,150 @@
+﻿@{
+    ViewBag.Title = "addholidays";
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+
+<style>
+    .product-colors input[type=checkbox], input[type=radio] {
+        display: inline-block !important;
+    }
+</style>
+
+@model veggiesapp.Models.holiday
+
+<div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="page-header">
+            <h2 class="pageheader-title">Holidays Management</h2>
+            <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
+            <div class="page-breadcrumb">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a class="breadcrumb-link">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a class="breadcrumb-link">Holidays Management</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">View Holidays</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="card">
+            <h5 class="card-header" style="background-color:#71748d;color:white">Add Holidays</h5>
+            <div class="card-body">
+                @using (Html.BeginForm("addinterholiday", "Holidays", FormMethod.Post, new { @onsubmit = "return validation()" }))
+                {
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label>City </label>
+                                @if (ViewBag.ctname1 != null)
+                                {
+                                    <select id="comboboxcity" class="form-control" style="width:150px;">
+                                        <option value="-1">Select Value</option>
+                                        @foreach (var city in ViewBag.cities)
+                                        {
+                                            if (city.Name == @ViewBag.ctname1)
+                                            {
+                                                <option selected="selected" value="@ViewBag.ctid1">@ViewBag.ctname1</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@city.id">@city.Name</option>
+                                            }
+                                        }
+                                    </select>
+                                }
+                                else
+                                {
+                                    <select id="comboboxcity" class="form-control" style="width:150px;">
+                                        <option selected="selected" value="-1">Select City</option>
+                                        @foreach (var city in ViewBag.cities)
+                                        {
+                                            <option value="@city.id">@city.Name</option>
+                                        }
+                                    </select>
+                                }
+                                <br />
+                                <span id="dropdownval" class="text-danger"></span>
+                            </div>
+                            <div class="form-group" id="chkboxvalidation">
+                                <Label>Areas</Label>
+                                @if (Model.check != null)
+                                {
+                                    for (int i = 0; i < Model.check.Count; i++)
+                                    {
+                                        <br />
+                                        @Html.CheckBoxFor(m => m.check[i].ischeck, new { @id = "comboboxareastest" })
+                                        @Model.check[i].arname
+                                        @Html.HiddenFor(m => m.check[i].arid)
+                                    }
+                                }<br />
+                                <span id="chkbox" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Name</label>
+                                @Html.TextBoxFor(m => m.title, new { @class = "form-control", @style = "width: 160px" })<br />
+                                @Html.ValidationMessageFor(m => m.title, null, new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group">
+                                <label>Holiday</label>
+                                <br />
+                                @Html.TextBoxFor(m => m.holidaydate, new { @class = "datepicker" })<br /><br />
+                                @Html.ValidationMessageFor(m => m.holidaydate, null, new { @class = "text-danger" })
+                            </div>
+                            <hr>
+                            <input type="submit" value="Submit" class="btn btn-primary" id="sbmt">
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $('#comboboxcity').on('change', function () {
+            var cityid = $('#comboboxcity option:selected').val();
+            window.location.href = "@TempData["path"].ToString()" + cityid;
+        });
+    });
+
+    function validation() {
+        var ctid = $('#comboboxcity option:selected').val();
+
+        if (ctid == -1) {
+            document.getElementById("dropdownval").innerHTML = "Select City";
+            return false;
+        }
+        else {
+                var checked_checkboxes = $("#chkboxvalidation input[type=checkbox]:checked");
+            if (checked_checkboxes.length == 0) {
+                document.getElementById("chkbox").innerHTML = "Atleast 1 area should be selected";
+                return false;
+            }
+            else {
+                document.getElementById("chkbox").innerHTML = "";
+                return true;
+            }
+        }
+    }
+
+</script>
+<script>
+    $(document).ready(function () {
+        $('.datepicker').datepicker({
+            format: 'dd/mm/yyyy',
+            changeMonth: true,
+            changeYear: true
+        });
+    });
+</script>

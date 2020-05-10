@@ -1,0 +1,130 @@
+﻿
+@{
+    ViewBag.Title = "CustomerDetail";
+    Layout = "~/Views/Shared/MyLayout  dealer.cshtml";
+}
+
+@model veggiesapp.Models.CustomerAddressbookjoin
+
+<div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="page-header">
+            <h2 class="pageheader-title">Customers Management</h2>
+            <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
+            <div class="page-breadcrumb">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a class="breadcrumb-link">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a class="breadcrumb-link">Customers Management</a></li>
+                        <li class="breadcrumb-item"><a class="breadcrumb-link"></a>All Customers</li>
+                        <li class="breadcrumb-item active" aria-current="page">Customer Detail</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!-- end pageheader -->
+<!-- ============================================================== -->
+
+
+<div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="card">
+            <h5 class="card-header" style="background-color:#71748d;color:white">Customer Details</h5>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="row form-group">
+                                            <div class="col-lg-2"><strong>Name :</strong></div>
+                                            <div class="col-lg-10">
+                                                @Html.DisplayFor(model => model.objcust.Name)
+                                            </div>
+                                        </div>
+
+                                        <div class=" row form-group">
+                                            <div class="col-lg-2"><strong>Email :</strong></div>
+                                            <div class="col-lg-10">
+                                                @Html.DisplayFor(model => model.objcust.Email)
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col-lg-2"><strong>Contact :</strong></div>
+                                            <div class="col-lg-10">
+                                                @Html.DisplayFor(model => model.objcust.Phone)
+                                            </div>
+                                        </div>
+                                        <div class="row form-group" id="message" runat="server" visible="false">
+                                            <div class="col-lg-2"><strong>Register Date :</strong></div>
+                                            <div class="col-lg-10">
+                                                @Html.DisplayFor(model => model.objcust.Addeddate)
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col-lg-2"><strong>Register IP: </strong></div>
+                                            <div class="col-lg-10">
+                                                @Html.DisplayFor(model => model.objcust.Addedip)
+                                            </div>
+                                        </div>
+                                        <br />
+
+                                        @foreach (var item in Model.objaddbook)
+                                        {
+                                            <div class="col-lg-12">
+                                                <div class="col-lg-12 alert addressdiv well" style="background-color: #ddd">
+                                                    <div class="row form-group">
+                                                        <div class="col-lg-4"><strong>Address</strong></div>
+                                                        <div class="col-lg-8">
+                                                            @Html.DisplayFor(m => item.Address)
+                                                        </div>
+                                                    </div>
+                                                    <div class="row form-group">
+                                                        <div class="col-lg-4"><strong>Area</strong></div>
+                                                        <div class="col-lg-8">
+                                                            @Html.DisplayFor(model => item.District)
+                                                        </div>
+                                                    </div>
+                                                    <div class="row form-group">
+                                                        <div class="col-lg-4"><strong>City</strong></div>
+                                                        <div class="col-lg-8">
+                                                            @Html.DisplayFor(model => item.City)
+                                                        </div>
+                                                    </div>
+                                                    <div class="row form-group">
+                                                        <div class="col-lg-4"><strong>State</strong></div>
+                                                        <div class="col-lg-8">
+                                                            @Html.DisplayFor(model => item.State)
+                                                        </div>
+                                                    </div>
+                                                    <div class="row form-group">
+                                                        <div class="col-lg-4"><strong>Zip Code</strong></div>
+                                                        <div class="col-lg-8">
+                                                            @Html.DisplayFor(model => item.PostCode)
+                                                        </div>
+                                                    </div>
+                                                    <div class="row form-group">
+                                                        <div class="col-lg-4"><strong>Landmark</strong></div>
+                                                        <div class="col-lg-8">
+                                                            @Html.DisplayFor(model => item.Landmark)
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                        <hr />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

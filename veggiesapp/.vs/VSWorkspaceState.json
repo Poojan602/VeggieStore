@@ -1,0 +1,19 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\veggiesapp",
+    "\\veggiesapp\\Content",
+    "\\veggiesapp\\Content\\assets",
+    "\\veggiesapp\\Content\\assets\\vendor",
+    "\\veggiesapp\\Content\\assets\\vendor\\charts",
+    "\\veggiesapp\\Content\\assets\\vendor\\charts\\morris-bundle",
+    "\\veggiesapp\\Content\\assets\\vendor\\jquery",
+    "\\veggiesapp\\Scripts",
+    "\\veggiesapp\\Views",
+    "\\veggiesapp\\Views\\Holidays",
+    "\\veggiesapp\\Views\\Shared",
+    "\\veggiesapp\\Views\\Voucher"
+  ],
+  "SelectedNode": "\\veggiesapp\\Views\\Voucher\\generatevoucher.cshtml",
+  "PreviewInSolutionExplorer": false
+}

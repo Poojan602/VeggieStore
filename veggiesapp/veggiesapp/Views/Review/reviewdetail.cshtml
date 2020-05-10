@@ -1,0 +1,231 @@
+﻿@{
+    ViewBag.Title = "reviewdetail";
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+
+@model veggiesapp.Models.OrdermasterOrderitemsjoin
+
+<div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="page-header">
+            <h2 class="pageheader-title">Order Management</h2>
+            <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
+            <div class="page-breadcrumb">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a class="breadcrumb-link">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a class="breadcrumb-link">Review Management</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Review Details</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <div class="dataTable_wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row form-group">
+                        <div class="col-lg-2"><strong>Order Number :</strong></div>
+                        <div class="col-lg">
+                            @Html.DisplayFor(m => m.objordermaster.ordernumber)
+                        </div>
+                        <div class="col-lg-2"><strong>Order Status :</strong></div>
+                        <div class="col-lg">
+                            <strong>
+                                @if (Model.objordermaster.OrderStatus == 0)
+                                {
+                                    <font color="red">UnConfirm</font>
+                                }
+                                else if (Model.objordermaster.OrderStatus == 1)
+                                {
+                                    <font color="green">Confirm</font>
+                                }
+                                else if (Model.objordermaster.OrderStatus == 2)
+                                {
+                                    <font color="orange">Packing Done</font>
+                                }
+                                else if (Model.objordermaster.OrderStatus == 3)
+                                {
+                                    <font color="magenta">Out For Delivery</font>
+                                }
+                                else if (Model.objordermaster.OrderStatus == 4)
+                                {
+                                    <font color="Blue">Delivered</font>
+                                }
+                                else if (Model.objordermaster.OrderStatus == 5)
+                                {
+                                    <font color="Gray">Return Order</font>
+                                }
+                                else if (Model.objordermaster.OrderStatus == 6)
+                                {
+                                    <font color="Black">Refunded</font>
+                                }
+                            </strong>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-lg-2"><strong>Order Date / Time :</strong></div>
+                        <div class="col-lg-4">
+                            @Html.DisplayFor(m => m.objordermaster.Orderdate) / @Html.DisplayFor(m => m.objordermaster.Ordertime)
+                        </div>
+                        <div class="col-lg-2"><strong>Refund Payment</strong></div>
+                        <div class="col-lg-3">
+                            <a onclick="return confirm('Are you sure you want to refud payment to customer this record?');" class="btn btn-danger btn-sm">Refund</a>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-lg-2"><strong>Delivery On :</strong></div>
+                        <div class="col-lg-4">
+                            @Html.DisplayFor(m => m.objordermaster.DeliveryOn)
+                        </div>
+                        <div class="col-lg-2"><strong>Payment Mode</strong></div>
+                        <div class="col-lg-2">
+                            @Html.DisplayFor(m => m.objordermaster.paymentmode)
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div id="ctl00_ContentPlaceHolder1_pnl_Record">
+
+                        <table class="table table-striped table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th class="header">Product/Instruction</th>
+                                    <th class="header">Name</th>
+                                    <th class="header">Quantity</th>
+                                    <th class="header">Weight/Unit</th>
+                                    <th class="header">Unit Price</th>
+                                    <th class="header">Total</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                @foreach (var item in Model.objorderitem)
+                                {
+                                    <tr class="odd gradeX">
+                                        <td data-th="Product/Instruction">
+                                            <img src="@item.Image" width="120px" height="120px"><br>
+                                        </td>
+                                        <td data-th="Name">
+                                            @item.Title<br>
+                                            @item.HindiTitle
+                                        </td>
+                                        <td data-th="Quantity">@item.Qty</td>
+                                        <td data-th="Weight/Unit">@item.Weight &nbsp; @item.Unit</td>
+                                        <td data-th="Unit Price">@item.price</td>
+                                        <td data-th="Total">@item.amount</td>
+                                    </tr>
+                                }
+                                <tr data-th="Total">
+                                    <td colspan="5" style="text-align: right;"><strong>Total:</strong></td>
+                                    <td>
+                                        Rs&nbsp;@Html.DisplayFor(m => m.objordermaster.Subtotal)
+                                    </td>
+                                </tr>
+                                <tr data-th="Delivery">
+                                    <td colspan="5" style="text-align: right;"><strong>Delivery:</strong></td>
+                                    <td>
+                                        Rs&nbsp;@Html.DisplayFor(m => m.objordermaster.Delivery)
+                                    </td>
+                                </tr>
+
+                                <tr data-th="Grand Total">
+                                    <td colspan="5" style="text-align: right;"><strong>From Wallet:</strong></td>
+                                    <td>
+                                        Rs&nbsp;@Html.DisplayFor(m => m.objordermaster.FromWallet)
+                                    </td>
+                                </tr>
+
+                                <tr data-th="Grand Total">
+                                    <td colspan="5" style="text-align: right;"><strong>Grand Total:</strong></td>
+                                    <td>
+                                        Rs&nbsp;@Html.DisplayFor(m => m.objordermaster.Grandtotal)
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row form-group">
+                        <div class="col-lg-6"><strong>Customer Review :</strong></div>
+                        <div class="col-lg-6">@Html.DisplayFor(m => m.objordermaster.review)</div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="row form-group">
+                        <div class="col-lg-12"><a href="" class="btn btn-xs btn-info">Go to Dealer @Html.DisplayFor(m => m.objordermaster.dealerid)</a></div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row form-group">
+                        <div class="col-lg-12"><strong>Customer Details :</strong></div>
+                    </div>
+                </div>
+
+                <div class="col-lg-12">
+                    <div class="row form-group">
+                        <div class="col-lg-6"><strong>Shipping Address :</strong></div>
+                        <div class="col-lg-6">
+                            <strong>@Html.DisplayFor(m => m.objordermaster.Name)</strong><br>@Html.DisplayFor(m => m.objordermaster.Address).<br>@Html.DisplayFor(m => m.objordermaster.District) - @Html.DisplayFor(m => m.objordermaster.Postcode)<br>@Html.DisplayFor(m => m.objordermaster.State).<br>Landmark : @Html.DisplayFor(m => m.objordermaster.Landmark).<br><br><strong>Phone:</strong> @Html.DisplayFor(m => m.objordermaster.Phone)<br><strong>Email:</strong> @Html.DisplayFor(m => m.objordermaster.Email)
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="col-lg-12">
+                        <div class="row form-group">
+                            <div class="col-lg-6"><strong>Status:</strong></div>
+                            <div class="col-lg-6">
+                                <select class="form-control">
+                                    <option selected="selected" value="1">Confirmed</option>
+                                    <option value="2">Packing Done</option>
+                                    <option value="3">Out for delivery</option>
+                                    <option value="4">Delivered</option>
+                                    <option value="5">Refunded</option>
+                                    <option value="6">Returned</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="row form-group">
+                            <div class="col-lg-6"><strong>Admin Comments/Note:</strong></div>
+                            <div class="col-lg-6">
+                                @Html.TextAreaFor(m => m.objordermaster.Admincomments, new { @cols = "65", @rows = "4" })
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <hr>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row form-group">
+                        <div class="col-lg-12">
+                            <input type="submit" value="Submit" class="btn btn-primary">
+                            &nbsp;&nbsp;
+                            <input type="button" value="Back" class="btn btn-primary">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

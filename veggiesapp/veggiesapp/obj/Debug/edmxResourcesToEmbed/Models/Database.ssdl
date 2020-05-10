@@ -1,0 +1,935 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="sabziappModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="8.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="addressbook">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="100" />
+    <Property Name="Address" Type="longtext" />
+    <Property Name="Landmark" Type="varchar" MaxLength="200" />
+    <Property Name="City" Type="varchar" MaxLength="100" />
+    <Property Name="State" Type="varchar" MaxLength="100" />
+    <Property Name="District" Type="varchar" MaxLength="100" />
+    <Property Name="PostCode" Type="varchar" MaxLength="100" />
+    <Property Name="Email" Type="varchar" MaxLength="200" />
+    <Property Name="Phone" Type="varchar" MaxLength="50" />
+    <Property Name="addeddate" Type="datetime" Precision="6" />
+    <Property Name="addedip" Type="varchar" MaxLength="50" />
+    <Property Name="modifydate" Type="datetime" Precision="6" />
+    <Property Name="modifyip" Type="varchar" MaxLength="50" />
+    <Property Name="isreg" Type="bool" />
+    <Property Name="Cid" Type="bigint" />
+    <Property Name="mobiledefault" Type="bool" />
+    <Property Name="MobileTitle" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="admin">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="unm" Type="varchar" MaxLength="30" />
+    <Property Name="pwd" Type="varchar" MaxLength="30" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="modifyip" Type="varchar" MaxLength="20" />
+    <Property Name="mshost" Type="varchar" MaxLength="255" />
+    <Property Name="msusername" Type="varchar" MaxLength="255" />
+    <Property Name="mspass" Type="varchar" MaxLength="255" />
+    <Property Name="Backupdt" Type="datetime" Precision="6" />
+  </EntityType>
+  <EntityType Name="adminlog">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="unm" Type="varchar" MaxLength="50" />
+    <Property Name="password" Type="varchar" MaxLength="15" />
+    <Property Name="aip" Type="varchar" MaxLength="20" />
+    <Property Name="adate" Type="datetime" Precision="6" />
+    <Property Name="asucess" Type="bool" />
+  </EntityType>
+  <EntityType Name="appdevice">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="deviceid" Type="longtext" />
+    <Property Name="devicetype" Type="varchar" MaxLength="100" />
+    <Property Name="deviceinfo" Type="varchar" MaxLength="200" />
+    <Property Name="addeddate" Type="datetime" Precision="6" />
+    <Property Name="addedip" Type="varchar" MaxLength="50" />
+    <Property Name="Email" Type="varchar" MaxLength="200" />
+    <Property Name="isactive" Type="bool" />
+  </EntityType>
+  <EntityType Name="area">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cityid" Type="bigint" />
+    <Property Name="Name" Type="varchar" MaxLength="255" />
+    <Property Name="visible" Type="bool" />
+    <Property Name="addeddate" Type="datetime" Precision="6" />
+    <Property Name="addedip" Type="varchar" MaxLength="50" />
+    <Property Name="modifydate" Type="datetime" Precision="6" />
+    <Property Name="modifyip" Type="varchar" MaxLength="50" />
+    <Property Name="shippingcharge" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="minimumcharge" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="areaselected">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="areaid" Type="bigint" />
+    <Property Name="dealerid" Type="bigint" />
+  </EntityType>
+  <EntityType Name="cart">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="custid" Type="longtext" />
+    <Property Name="Proid" Type="bigint" />
+    <Property Name="priceid" Type="bigint" />
+    <Property Name="areaid" Type="bigint" />
+    <Property Name="Quantity" Type="bigint" />
+    <Property Name="isspecial" Type="utinyint" />
+    <Property Name="instruction" Type="longtext" />
+  </EntityType>
+  <EntityType Name="city">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="255" />
+    <Property Name="visible" Type="bool" />
+    <Property Name="addeddate" Type="datetime" Precision="6" />
+    <Property Name="addedip" Type="varchar" MaxLength="50" />
+    <Property Name="modifydate" Type="datetime" Precision="6" />
+    <Property Name="modifyip" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="currentversion">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="version" Type="longtext" />
+  </EntityType>
+  <EntityType Name="customer">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="100" />
+    <Property Name="Address" Type="longtext" />
+    <Property Name="Landmark" Type="varchar" MaxLength="200" />
+    <Property Name="City" Type="varchar" MaxLength="100" />
+    <Property Name="State" Type="varchar" MaxLength="100" />
+    <Property Name="PostCode" Type="varchar" MaxLength="100" />
+    <Property Name="Country" Type="varchar" MaxLength="100" />
+    <Property Name="Email" Type="varchar" MaxLength="200" />
+    <Property Name="Password" Type="varchar" MaxLength="50" />
+    <Property Name="Phone" Type="varchar" MaxLength="50" />
+    <Property Name="Status" Type="bool" />
+    <Property Name="Addeddate" Type="datetime" Precision="6" />
+    <Property Name="Addedip" Type="varchar" MaxLength="50" />
+    <Property Name="Modifydate" Type="datetime" Precision="6" />
+    <Property Name="Modifyip" Type="varchar" MaxLength="50" />
+    <Property Name="numConfirmed" Type="bool" />
+    <Property Name="areaid" Type="bigint" />
+    <Property Name="deviceid" Type="longtext" />
+  </EntityType>
+  <EntityType Name="dealers">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="100" />
+    <Property Name="Address" Type="longtext" />
+    <Property Name="Landmark" Type="varchar" MaxLength="200" />
+    <Property Name="City" Type="bigint" />
+    <Property Name="State" Type="bigint" />
+    <Property Name="PostCode" Type="varchar" MaxLength="100" />
+    <Property Name="Email" Type="varchar" MaxLength="200" />
+    <Property Name="Password" Type="varchar" MaxLength="50" />
+    <Property Name="Phone" Type="varchar" MaxLength="50" />
+    <Property Name="Status" Type="bool" />
+    <Property Name="Addeddate" Type="datetime" Precision="6" />
+    <Property Name="Addedip" Type="varchar" MaxLength="50" />
+    <Property Name="Modifydate" Type="datetime" Precision="6" />
+    <Property Name="Modifyip" Type="varchar" MaxLength="50" />
+    <Property Name="numConfirmed" Type="bool" />
+    <Property Name="unread" Type="utinyint" />
+    <Property Name="SlotDescription" Type="longtext" />
+    <Property Name="otherarea" Type="longtext" />
+  </EntityType>
+  <EntityType Name="dealersnotification">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="dealerid" Type="bigint" />
+    <Property Name="message" Type="longtext" />
+    <Property Name="addeddate" Type="datetime" Precision="6" />
+    <Property Name="addedip" Type="varchar" MaxLength="50" />
+    <Property Name="Unread" Type="utinyint" />
+  </EntityType>
+  <EntityType Name="deliveryslot">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="varchar" MaxLength="100" />
+    <Property Name="timeslot" Type="varchar" MaxLength="50" />
+    <Property Name="active" Type="bool" />
+    <Property Name="modifydate" Type="datetime" Precision="6" />
+    <Property Name="modifyip" Type="varchar" MaxLength="50" />
+    <Property Name="modifyby" Type="int" />
+    <Property Name="totalorders" Type="bigint" />
+    <Property Name="isactive" Type="bool" />
+    <Property Name="Dealerid" Type="bigint" />
+  </EntityType>
+  <EntityType Name="dist_state">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="300" />
+    <Property Name="subid" Type="bigint" />
+    <Property Name="visible" Type="bool" />
+  </EntityType>
+  <EntityType Name="emailtemplate">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="200" />
+    <Property Name="Description" Type="longtext" />
+    <Property Name="modifyip" Type="varchar" MaxLength="20" />
+    <Property Name="modifydate" Type="datetime" Precision="6" />
+  </EntityType>
+  <EntityType Name="enquiry">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="fname" Type="varchar" MaxLength="255" />
+    <Property Name="lname" Type="varchar" MaxLength="255" />
+    <Property Name="phone" Type="varchar" MaxLength="50" />
+    <Property Name="email" Type="varchar" MaxLength="255" />
+    <Property Name="city" Type="varchar" MaxLength="100" />
+    <Property Name="country" Type="varchar" MaxLength="50" />
+    <Property Name="message" Type="longtext" />
+    <Property Name="addeddate" Type="datetime" Precision="6" />
+    <Property Name="addedip" Type="varchar" MaxLength="50" />
+    <Property Name="unread" Type="utinyint" />
+  </EntityType>
+  <EntityType Name="faq">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="Visible" Type="bool" />
+    <Property Name="Question" Type="varchar" MaxLength="255" />
+    <Property Name="Answer" Type="longtext" />
+    <Property Name="Catid" Type="bigint" />
+    <Property Name="sortorder" Type="bigint" />
+    <Property Name="addeddate" Type="datetime" Precision="6" />
+    <Property Name="addedip" Type="varchar" MaxLength="50" />
+    <Property Name="modifydate" Type="datetime" Precision="6" />
+    <Property Name="modifyip" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="faqcategory">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="Visible" Type="bool" />
+    <Property Name="Title" Type="varchar" MaxLength="255" />
+    <Property Name="sortorder" Type="bigint" />
+    <Property Name="AddedDate" Type="datetime" Precision="6" />
+    <Property Name="AddedIp" Type="varchar" MaxLength="50" />
+    <Property Name="ModifyDate" Type="datetime" Precision="6" />
+    <Property Name="ModifyIp" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="faqenquiry">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="255" />
+    <Property Name="email" Type="varchar" MaxLength="255" />
+    <Property Name="phone" Type="varchar" MaxLength="15" />
+    <Property Name="message" Type="longtext" />
+    <Property Name="addeddate" Type="datetime" Precision="6" />
+    <Property Name="addedip" Type="varchar" MaxLength="50" />
+    <Property Name="unread" Type="bool" />
+  </EntityType>
+  <EntityType Name="holidays">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="varchar" MaxLength="250" />
+    <Property Name="addeddate" Type="datetime" Precision="6" />
+    <Property Name="addedip" Type="varchar" MaxLength="45" />
+    <Property Name="modifydate" Type="datetime" Precision="6" />
+    <Property Name="ModifyIp" Type="varchar" MaxLength="45" />
+    <Property Name="holidaydate" Type="datetime" Precision="6" />
+    <Property Name="dealerid" Type="bigint" />
+  </EntityType>
+  <EntityType Name="homebanner">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="visible" Type="bool" />
+    <Property Name="image" Type="varchar" MaxLength="200" />
+    <Property Name="link" Type="longtext" />
+    <Property Name="sortorder" Type="bigint" />
+    <Property Name="addeddate" Type="datetime" Precision="6" />
+    <Property Name="addedip" Type="varchar" MaxLength="50" />
+    <Property Name="modifydate" Type="datetime" Precision="6" />
+    <Property Name="modifyip" Type="varchar" MaxLength="50" />
+    <Property Name="dealerid" Type="bigint" />
+    <Property Name="ismainpage" Type="bool" />
+  </EntityType>
+  <EntityType Name="insidepage">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" Nullable="false" />
+    <Property Name="PageName" Type="varchar" MaxLength="255" />
+    <Property Name="PageIETitle" Type="varchar" MaxLength="255" />
+    <Property Name="PageDesc" Type="longtext" />
+    <Property Name="Meta" Type="longtext" />
+    <Property Name="addedip" Type="varchar" MaxLength="20" />
+    <Property Name="addeddate" Type="datetime" Precision="6" />
+    <Property Name="modifyip" Type="varchar" MaxLength="20" />
+    <Property Name="modifydate" Type="datetime" Precision="6" />
+    <Property Name="sortorder" Type="bigint" />
+  </EntityType>
+  <EntityType Name="newslettercampaign">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="fromEmail" Type="varchar" MaxLength="245" />
+    <Property Name="subject" Type="varchar" MaxLength="500" />
+    <Property Name="body" Type="longtext" />
+    <Property Name="status" Type="bool" />
+    <Property Name="addeddate" Type="datetime" Precision="6" />
+    <Property Name="addedip" Type="varchar" MaxLength="50" />
+    <Property Name="modifydate" Type="datetime" Precision="6" />
+    <Property Name="modifyip" Type="varchar" MaxLength="50" />
+    <Property Name="subscriberCnt" Type="bigint" />
+  </EntityType>
+  <EntityType Name="newslettergroup">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="250" />
+    <Property Name="addeddate" Type="datetime" Precision="6" />
+    <Property Name="addedIp" Type="varchar" MaxLength="45" />
+    <Property Name="ModifyDate" Type="datetime" Precision="6" />
+    <Property Name="ModifyIp" Type="varchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="newslettersendhistory">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="CampaignId" Type="bigint" />
+    <Property Name="ToMail" Type="varchar" MaxLength="245" />
+    <Property Name="ToName" Type="varchar" MaxLength="145" />
+  </EntityType>
+  <EntityType Name="newslettersubscriber">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="Visible" Type="bool" />
+    <Property Name="groupid" Type="bigint" />
+    <Property Name="Name" Type="varchar" MaxLength="200" />
+    <Property Name="Email" Type="varchar" MaxLength="500" />
+    <Property Name="AddedDate" Type="datetime" Precision="6" />
+    <Property Name="AddedIp" Type="varchar" MaxLength="45" />
+    <Property Name="ModifyDate" Type="datetime" Precision="6" />
+    <Property Name="ModifyIp" Type="varchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="newslettertemplate">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="250" />
+    <Property Name="Description" Type="longtext" />
+    <Property Name="addeddate" Type="datetime" Precision="6" />
+    <Property Name="addedIp" Type="varchar" MaxLength="45" />
+    <Property Name="ModifyDate" Type="datetime" Precision="6" />
+    <Property Name="ModifyIp" Type="varchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="notifications">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Message" Type="longtext" />
+    <Property Name="addeddate" Type="datetime" Precision="6" />
+    <Property Name="image" Type="longtext" />
+    <Property Name="dealerid" Type="bigint" />
+  </EntityType>
+  <EntityType Name="orderitems">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="Ordid" Type="bigint" />
+    <Property Name="pid" Type="bigint" />
+    <Property Name="cat1id" Type="bigint" />
+    <Property Name="cat2id" Type="bigint" />
+    <Property Name="Image" Type="longtext" />
+    <Property Name="Title" Type="varchar" MaxLength="100" />
+    <Property Name="HindiTitle" Type="varchar" MaxLength="100" />
+    <Property Name="price" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Weight" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Unit" Type="varchar" MaxLength="100" />
+    <Property Name="Qty" Type="bigint" />
+    <Property Name="amount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Delivery" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="priceDesc" Type="longtext" />
+    <Property Name="specialInstruction" Type="longtext" />
+    <Property Name="SpecialType" Type="bigint" />
+    <Property Name="itempriceid" Type="bigint" />
+    <Property Name="CGST" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="SGST" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="ordermaster">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="255" />
+    <Property Name="Email" Type="varchar" MaxLength="300" />
+    <Property Name="Address" Type="longtext" />
+    <Property Name="City" Type="varchar" MaxLength="100" />
+    <Property Name="State" Type="varchar" MaxLength="100" />
+    <Property Name="District" Type="varchar" MaxLength="100" />
+    <Property Name="Postcode" Type="varchar" MaxLength="100" />
+    <Property Name="Landmark" Type="varchar" MaxLength="200" />
+    <Property Name="Phone" Type="varchar" MaxLength="50" />
+    <Property Name="BName" Type="varchar" MaxLength="100" />
+    <Property Name="BEmail" Type="varchar" MaxLength="300" />
+    <Property Name="BAddress" Type="longtext" />
+    <Property Name="BCity" Type="varchar" MaxLength="100" />
+    <Property Name="BState" Type="varchar" MaxLength="100" />
+    <Property Name="BPostCode" Type="varchar" MaxLength="100" />
+    <Property Name="BLandmark" Type="varchar" MaxLength="200" />
+    <Property Name="BPhone" Type="varchar" MaxLength="50" />
+    <Property Name="uid" Type="bigint" />
+    <Property Name="Subtotal" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Grandtotal" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Delivery" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="discount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Orderdate" Type="datetime" Precision="6" />
+    <Property Name="Orderip" Type="varchar" MaxLength="50" />
+    <Property Name="Total" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="OrderStatus" Type="bigint" />
+    <Property Name="GiftCodeType" Type="bigint" />
+    <Property Name="ordernumber" Type="longtext" />
+    <Property Name="unread" Type="utinyint" />
+    <Property Name="Admincomments" Type="longtext" />
+    <Property Name="AutoProcessDone" Type="bigint" />
+    <Property Name="ModifyDate" Type="datetime" Precision="6" />
+    <Property Name="ModifyIp" Type="varchar" MaxLength="50" />
+    <Property Name="DiscountDESC" Type="longtext" />
+    <Property Name="FromWallet" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Express" Type="bigint" />
+    <Property Name="DeliveryOn" Type="longtext" />
+    <Property Name="paymentmode" Type="varchar" MaxLength="100" />
+    <Property Name="Ordertime" Type="varchar" MaxLength="50" />
+    <Property Name="dealerid" Type="bigint" />
+    <Property Name="israting" Type="utinyint" />
+    <Property Name="rating" Type="varchar" MaxLength="50" />
+    <Property Name="review" Type="longtext" />
+  </EntityType>
+  <EntityType Name="pricemanager">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Weight" Type="bigint" />
+    <Property Name="Description" Type="longtext" />
+    <Property Name="APrice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="DPrice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="productid" Type="bigint" />
+    <Property Name="Unit" Type="varchar" MaxLength="50" />
+    <Property Name="Pqty" Type="bigint" />
+    <Property Name="Rlevel" Type="bigint" />
+  </EntityType>
+  <EntityType Name="product">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="255" />
+    <Property Name="HindiTitle" Type="varchar" MaxLength="255" />
+    <Property Name="cat1id" Type="bigint" />
+    <Property Name="cat2id" Type="bigint" />
+    <Property Name="DESCabout" Type="longtext" />
+    <Property Name="DESCbenifits" Type="longtext" />
+    <Property Name="DESChowtouse" Type="longtext" />
+    <Property Name="UOM" Type="varchar" MaxLength="50" />
+    <Property Name="visible" Type="bool" />
+    <Property Name="featured" Type="bool" />
+    <Property Name="sortorder" Type="bigint" />
+    <Property Name="addeddate" Type="datetime" Precision="6" />
+    <Property Name="addedip" Type="varchar" MaxLength="50" />
+    <Property Name="modifydate" Type="datetime" Precision="6" />
+    <Property Name="modifyip" Type="varchar" MaxLength="50" />
+    <Property Name="cityid" Type="bigint" />
+    <Property Name="dealerid" Type="bigint" />
+    <Property Name="type" Type="utinyint" />
+    <Property Name="Image" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="productcategory1">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="255" />
+    <Property Name="visible" Type="bool" />
+    <Property Name="sortorder" Type="bigint" />
+    <Property Name="addeddate" Type="datetime" Precision="6" />
+    <Property Name="addedip" Type="varchar" MaxLength="50" />
+    <Property Name="modifydate" Type="datetime" Precision="6" />
+    <Property Name="modifyip" Type="varchar" MaxLength="50" />
+    <Property Name="image" Type="longtext" />
+    <Property Name="dealerid" Type="bigint" />
+  </EntityType>
+  <EntityType Name="productcategory2">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cat1id" Type="bigint" />
+    <Property Name="name" Type="varchar" MaxLength="255" />
+    <Property Name="visible" Type="bool" />
+    <Property Name="addeddate" Type="datetime" Precision="6" />
+    <Property Name="addedip" Type="varchar" MaxLength="50" />
+    <Property Name="modifydate" Type="datetime" Precision="6" />
+    <Property Name="modifyip" Type="varchar" MaxLength="50" />
+    <Property Name="image" Type="longtext" />
+    <Property Name="dealerid" Type="bigint" />
+  </EntityType>
+  <EntityType Name="redeedmvippoint">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="amount" Type="decimal" Precision="15" Scale="2" />
+    <Property Name="issuedate" Type="datetime" Precision="6" />
+    <Property Name="name" Type="varchar" MaxLength="100" />
+    <Property Name="UID" Type="bigint" />
+    <Property Name="email" Type="varchar" MaxLength="255" />
+    <Property Name="AddedDate" Type="datetime" Precision="6" />
+    <Property Name="Addedip" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="refundhistory">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="uid" Type="bigint" />
+    <Property Name="amount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ordid" Type="bigint" />
+    <Property Name="addeddate" Type="datetime" Precision="6" />
+    <Property Name="addedip" Type="varchar" MaxLength="50" />
+    <Property Name="canceled" Type="bigint" />
+    <Property Name="email" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'def.sabziapp.sampleproduct' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="sampleproduct">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="255" />
+    <Property Name="HindiTitle" Type="varchar" MaxLength="255" />
+    <Property Name="cat1id" Type="bigint" />
+    <Property Name="cat2id" Type="bigint" />
+    <Property Name="DESCabout" Type="longtext" />
+    <Property Name="DESCbenifits" Type="longtext" />
+    <Property Name="DESChowtouse" Type="longtext" />
+    <Property Name="UOM" Type="varchar" MaxLength="50" />
+    <Property Name="visible" Type="bool" />
+    <Property Name="featured" Type="bool" />
+    <Property Name="sortorder" Type="bigint" />
+    <Property Name="addeddate" Type="datetime" Precision="6" />
+    <Property Name="addedip" Type="varchar" MaxLength="50" />
+    <Property Name="modifydate" Type="datetime" Precision="6" />
+    <Property Name="modifyip" Type="varchar" MaxLength="50" />
+    <Property Name="cityid" Type="bigint" />
+    <Property Name="dealerid" Type="bigint" />
+    <Property Name="type" Type="utinyint" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'def.sabziapp.sampleproductimages' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="sampleproductimages">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="image" Type="varchar" MaxLength="255" />
+    <Property Name="productid" Type="bigint" />
+  </EntityType>
+  <EntityType Name="searchhistory">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="word" Type="longtext" />
+    <Property Name="searchdate" Type="datetime" Precision="6" />
+  </EntityType>
+  <EntityType Name="sendnewsletterscheduler">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="toemail" Type="varchar" MaxLength="245" />
+    <Property Name="campaignid" Type="bigint" />
+  </EntityType>
+  <EntityType Name="shippingcharges">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="shippingcharge" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="modifydate" Type="datetime" Precision="6" />
+    <Property Name="modifyip" Type="varchar" MaxLength="50" />
+    <Property Name="minimumamount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="area" Type="bigint" />
+    <Property Name="city" Type="bigint" />
+    <Property Name="addeddate" Type="datetime" Precision="6" />
+    <Property Name="addedip" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="siteprofile">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="mshost" Type="varchar" MaxLength="255" />
+    <Property Name="msusername" Type="varchar" MaxLength="255" />
+    <Property Name="mspass" Type="varchar" MaxLength="255" />
+    <Property Name="contemail" Type="varchar" MaxLength="255" />
+    <Property Name="contccemail" Type="varchar" MaxLength="255" />
+    <Property Name="contbccemail" Type="varchar" MaxLength="255" />
+    <Property Name="addedip" Type="varchar" MaxLength="255" />
+    <Property Name="addeddate" Type="datetime" Precision="6" />
+    <Property Name="modifyip" Type="varchar" MaxLength="255" />
+    <Property Name="modifydate" Type="datetime" Precision="6" />
+  </EntityType>
+  <EntityType Name="specialpricemanager">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="Weight" Type="bigint" />
+    <Property Name="Description" Type="longtext" />
+    <Property Name="APrice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="DPrice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="productid" Type="bigint" />
+    <Property Name="Unit" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="specialproduct">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="255" />
+    <Property Name="HindiTitle" Type="varchar" MaxLength="255" />
+    <Property Name="cat1id" Type="bigint" />
+    <Property Name="cat2id" Type="bigint" />
+    <Property Name="Description" Type="longtext" />
+    <Property Name="UOM" Type="varchar" MaxLength="50" />
+    <Property Name="visible" Type="bool" />
+    <Property Name="featured" Type="bool" />
+    <Property Name="sortorder" Type="bigint" />
+    <Property Name="addeddate" Type="datetime" Precision="6" />
+    <Property Name="addedip" Type="varchar" MaxLength="50" />
+    <Property Name="modifydate" Type="datetime" Precision="6" />
+    <Property Name="modifyip" Type="varchar" MaxLength="50" />
+    <Property Name="offerdate" Type="datetime" Precision="6" />
+    <Property Name="cityid" Type="bigint" />
+    <Property Name="Specialweight" Type="bigint" />
+    <Property Name="dealerid" Type="bigint" />
+  </EntityType>
+  <EntityType Name="specialproductimages">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="image" Type="varchar" MaxLength="255" />
+    <Property Name="productid" Type="bigint" />
+  </EntityType>
+  <EntityType Name="specialstockmanager">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="Areaid" Type="bigint" />
+    <Property Name="productid" Type="bigint" />
+    <Property Name="Quantity" Type="bigint" />
+    <Property Name="reorderlevel" Type="bigint" />
+  </EntityType>
+  <EntityType Name="stockmanager">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="Areaid" Type="bigint" />
+    <Property Name="productid" Type="bigint" />
+    <Property Name="Quantity" Type="bigint" />
+    <Property Name="reorderlevel" Type="bigint" />
+  </EntityType>
+  <EntityType Name="subscription">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="255" />
+    <Property Name="month" Type="bigint" />
+    <Property Name="days" Type="bigint" />
+    <Property Name="amount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Visible" Type="bool" />
+    <Property Name="addeddate" Type="datetime" Precision="6" />
+    <Property Name="addedip" Type="varchar" MaxLength="50" />
+    <Property Name="modifydate" Type="datetime" Precision="6" />
+    <Property Name="modifyip" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="subscriptionselected">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="dealerid" Type="bigint" />
+    <Property Name="name" Type="varchar" MaxLength="255" />
+    <Property Name="month" Type="bigint" />
+    <Property Name="days" Type="bigint" />
+    <Property Name="amount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="status" Type="utinyint" />
+    <Property Name="enddate" Type="datetime" Precision="6" />
+  </EntityType>
+  <EntityType Name="supporttype">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="type" Type="longtext" />
+    <Property Name="addeddate" Type="datetime" Precision="6" />
+    <Property Name="addedip" Type="varchar" MaxLength="45" />
+    <Property Name="visible" Type="bool" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="varchar" MaxLength="160" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="longblob" />
+  </EntityType>
+  <EntityType Name="tax">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="ProductTax" Type="decimal" Precision="18" Scale="3" />
+    <Property Name="RestTax" Type="decimal" Precision="18" Scale="3" />
+    <Property Name="ModifyDate" Type="datetime" Precision="6" />
+    <Property Name="ModifyIp" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="testimonial">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="Visible" Type="bool" />
+    <Property Name="Name" Type="varchar" MaxLength="100" />
+    <Property Name="Position" Type="varchar" MaxLength="100" />
+    <Property Name="Company" Type="varchar" MaxLength="200" />
+    <Property Name="Image" Type="varchar" MaxLength="500" />
+    <Property Name="Description" Type="longtext" />
+    <Property Name="sortorder" Type="bigint" />
+    <Property Name="AddedDate" Type="datetime" Precision="6" />
+    <Property Name="AddedIp" Type="varchar" MaxLength="45" />
+    <Property Name="ModifyDate" Type="datetime" Precision="6" />
+    <Property Name="ModifyIp" Type="varchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="ticketdetails">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="100" />
+    <Property Name="ticketid" Type="bigint" />
+    <Property Name="comments" Type="longtext" />
+    <Property Name="replytype" Type="bool" />
+    <Property Name="Addeddate" Type="datetime" Precision="6" />
+    <Property Name="Addedip" Type="varchar" MaxLength="50" />
+    <Property Name="Modifydate" Type="datetime" Precision="6" />
+    <Property Name="Modifyip" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tickets">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="customerid" Type="bigint" />
+    <Property Name="subject" Type="varchar" MaxLength="100" />
+    <Property Name="ticketid" Type="varchar" MaxLength="100" />
+    <Property Name="status" Type="bool" />
+    <Property Name="replystatus" Type="bool" />
+    <Property Name="supportfor" Type="varchar" MaxLength="100" />
+    <Property Name="Addeddate" Type="datetime" Precision="6" />
+    <Property Name="Addedip" Type="varchar" MaxLength="50" />
+    <Property Name="closedate" Type="datetime" Precision="6" />
+    <Property Name="reopendate" Type="datetime" Precision="6" />
+    <Property Name="adminunread" Type="utinyint" />
+    <Property Name="Dealerunread" Type="utinyint" />
+  </EntityType>
+  <EntityType Name="voucher">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Code" Type="varchar" MaxLength="100" />
+    <Property Name="Type" Type="smallint" />
+    <Property Name="VoucherAmount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="MinimumAmount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="PublishDate" Type="datetime" Precision="6" />
+    <Property Name="ExpiryDate" Type="datetime" Precision="6" />
+    <Property Name="Towhom" Type="smallint" />
+    <Property Name="AdminNote" Type="longtext" />
+    <Property Name="addeddate" Type="datetime" Precision="6" />
+    <Property Name="addedIp" Type="varchar" MaxLength="50" />
+    <Property Name="ModifyDate" Type="datetime" Precision="6" />
+    <Property Name="ModifyIp" Type="varchar" MaxLength="50" />
+    <Property Name="Sent" Type="bool" />
+    <Property Name="SenttoAll" Type="bool" />
+    <Property Name="areaid" Type="bigint" />
+  </EntityType>
+  <EntityType Name="voucheruser">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="VoucherID" Type="bigint" />
+    <Property Name="UserEmail" Type="longtext" />
+    <Property Name="Used" Type="bool" />
+    <Property Name="EMailSend" Type="bool" />
+    <Property Name="Username" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="wallet">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="amount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="uid" Type="bigint" />
+    <Property Name="Email" Type="varchar" MaxLength="255" />
+    <Property Name="modifydate" Type="datetime" Precision="6" />
+  </EntityType>
+  <EntityContainer Name="sabziappModelStoreContainer">
+    <EntitySet Name="addressbook" EntityType="Self.addressbook" Schema="sabziapp" store:Type="Tables" />
+    <EntitySet Name="admin" EntityType="Self.admin" Schema="sabziapp" store:Type="Tables" />
+    <EntitySet Name="adminlog" EntityType="Self.adminlog" Schema="sabziapp" store:Type="Tables" />
+    <EntitySet Name="appdevice" EntityType="Self.appdevice" Schema="sabziapp" store:Type="Tables" />
+    <EntitySet Name="area" EntityType="Self.area" Schema="sabziapp" store:Type="Tables" />
+    <EntitySet Name="areaselected" EntityType="Self.areaselected" Schema="sabziapp" store:Type="Tables" />
+    <EntitySet Name="cart" EntityType="Self.cart" Schema="sabziapp" store:Type="Tables" />
+    <EntitySet Name="city" EntityType="Self.city" Schema="sabziapp" store:Type="Tables" />
+    <EntitySet Name="currentversion" EntityType="Self.currentversion" Schema="sabziapp" store:Type="Tables" />
+    <EntitySet Name="customer" EntityType="Self.customer" Schema="sabziapp" store:Type="Tables" />
+    <EntitySet Name="dealers" EntityType="Self.dealers" Schema="sabziapp" store:Type="Tables" />
+    <EntitySet Name="dealersnotification" EntityType="Self.dealersnotification" Schema="sabziapp" store:Type="Tables" />
+    <EntitySet Name="deliveryslot" EntityType="Self.deliveryslot" Schema="sabziapp" store:Type="Tables" />
+    <EntitySet Name="dist_state" EntityType="Self.dist_state" Schema="sabziapp" store:Type="Tables" />
+    <EntitySet Name="emailtemplate" EntityType="Self.emailtemplate" Schema="sabziapp" store:Type="Tables" />
+    <EntitySet Name="enquiry" EntityType="Self.enquiry" Schema="sabziapp" store:Type="Tables" />
+    <EntitySet Name="faq" EntityType="Self.faq" Schema="sabziapp" store:Type="Tables" />
+    <EntitySet Name="faqcategory" EntityType="Self.faqcategory" Schema="sabziapp" store:Type="Tables" />
+    <EntitySet Name="faqenquiry" EntityType="Self.faqenquiry" Schema="sabziapp" store:Type="Tables" />
+    <EntitySet Name="holidays" EntityType="Self.holidays" Schema="sabziapp" store:Type="Tables" />
+    <EntitySet Name="homebanner" EntityType="Self.homebanner" Schema="sabziapp" store:Type="Tables" />
+    <EntitySet Name="insidepage" EntityType="Self.insidepage" Schema="sabziapp" store:Type="Tables" />
+    <EntitySet Name="newslettercampaign" EntityType="Self.newslettercampaign" Schema="sabziapp" store:Type="Tables" />
+    <EntitySet Name="newslettergroup" EntityType="Self.newslettergroup" Schema="sabziapp" store:Type="Tables" />
+    <EntitySet Name="newslettersendhistory" EntityType="Self.newslettersendhistory" Schema="sabziapp" store:Type="Tables" />
+    <EntitySet Name="newslettersubscriber" EntityType="Self.newslettersubscriber" Schema="sabziapp" store:Type="Tables" />
+    <EntitySet Name="newslettertemplate" EntityType="Self.newslettertemplate" Schema="sabziapp" store:Type="Tables" />
+    <EntitySet Name="notifications" EntityType="Self.notifications" Schema="sabziapp" store:Type="Tables" />
+    <EntitySet Name="orderitems" EntityType="Self.orderitems" Schema="sabziapp" store:Type="Tables" />
+    <EntitySet Name="ordermaster" EntityType="Self.ordermaster" Schema="sabziapp" store:Type="Tables" />
+    <EntitySet Name="pricemanager" EntityType="Self.pricemanager" Schema="sabziapp" store:Type="Tables" />
+    <EntitySet Name="product" EntityType="Self.product" Schema="sabziapp" store:Type="Tables" />
+    <EntitySet Name="productcategory1" EntityType="Self.productcategory1" Schema="sabziapp" store:Type="Tables" />
+    <EntitySet Name="productcategory2" EntityType="Self.productcategory2" Schema="sabziapp" store:Type="Tables" />
+    <EntitySet Name="redeedmvippoint" EntityType="Self.redeedmvippoint" Schema="sabziapp" store:Type="Tables" />
+    <EntitySet Name="refundhistory" EntityType="Self.refundhistory" Schema="sabziapp" store:Type="Tables" />
+    <EntitySet Name="searchhistory" EntityType="Self.searchhistory" Schema="sabziapp" store:Type="Tables" />
+    <EntitySet Name="sendnewsletterscheduler" EntityType="Self.sendnewsletterscheduler" Schema="sabziapp" store:Type="Tables" />
+    <EntitySet Name="shippingcharges" EntityType="Self.shippingcharges" Schema="sabziapp" store:Type="Tables" />
+    <EntitySet Name="siteprofile" EntityType="Self.siteprofile" Schema="sabziapp" store:Type="Tables" />
+    <EntitySet Name="specialpricemanager" EntityType="Self.specialpricemanager" Schema="sabziapp" store:Type="Tables" />
+    <EntitySet Name="specialproduct" EntityType="Self.specialproduct" Schema="sabziapp" store:Type="Tables" />
+    <EntitySet Name="specialproductimages" EntityType="Self.specialproductimages" Schema="sabziapp" store:Type="Tables" />
+    <EntitySet Name="specialstockmanager" EntityType="Self.specialstockmanager" Schema="sabziapp" store:Type="Tables" />
+    <EntitySet Name="stockmanager" EntityType="Self.stockmanager" Schema="sabziapp" store:Type="Tables" />
+    <EntitySet Name="subscription" EntityType="Self.subscription" Schema="sabziapp" store:Type="Tables" />
+    <EntitySet Name="subscriptionselected" EntityType="Self.subscriptionselected" Schema="sabziapp" store:Type="Tables" />
+    <EntitySet Name="supporttype" EntityType="Self.supporttype" Schema="sabziapp" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="sabziapp" store:Type="Tables" />
+    <EntitySet Name="tax" EntityType="Self.tax" Schema="sabziapp" store:Type="Tables" />
+    <EntitySet Name="testimonial" EntityType="Self.testimonial" Schema="sabziapp" store:Type="Tables" />
+    <EntitySet Name="ticketdetails" EntityType="Self.ticketdetails" Schema="sabziapp" store:Type="Tables" />
+    <EntitySet Name="tickets" EntityType="Self.tickets" Schema="sabziapp" store:Type="Tables" />
+    <EntitySet Name="voucher" EntityType="Self.voucher" Schema="sabziapp" store:Type="Tables" />
+    <EntitySet Name="voucheruser" EntityType="Self.voucheruser" Schema="sabziapp" store:Type="Tables" />
+    <EntitySet Name="wallet" EntityType="Self.wallet" Schema="sabziapp" store:Type="Tables" />
+    <EntitySet Name="sampleproduct" EntityType="Self.sampleproduct" store:Type="Tables" store:Schema="sabziapp">
+      <DefiningQuery>SELECT
+`sampleproduct`.`id`, 
+`sampleproduct`.`Title`, 
+`sampleproduct`.`HindiTitle`, 
+`sampleproduct`.`cat1id`, 
+`sampleproduct`.`cat2id`, 
+`sampleproduct`.`DESCabout`, 
+`sampleproduct`.`DESCbenifits`, 
+`sampleproduct`.`DESChowtouse`, 
+`sampleproduct`.`UOM`, 
+`sampleproduct`.`visible`, 
+`sampleproduct`.`featured`, 
+`sampleproduct`.`sortorder`, 
+`sampleproduct`.`addeddate`, 
+`sampleproduct`.`addedip`, 
+`sampleproduct`.`modifydate`, 
+`sampleproduct`.`modifyip`, 
+`sampleproduct`.`cityid`, 
+`sampleproduct`.`dealerid`, 
+`sampleproduct`.`type`
+FROM `sampleproduct` AS `sampleproduct`</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="sampleproductimages" EntityType="Self.sampleproductimages" store:Type="Tables" store:Schema="sabziapp">
+      <DefiningQuery>SELECT
+`sampleproductimages`.`id`, 
+`sampleproductimages`.`image`, 
+`sampleproductimages`.`productid`
+FROM `sampleproductimages` AS `sampleproductimages`</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

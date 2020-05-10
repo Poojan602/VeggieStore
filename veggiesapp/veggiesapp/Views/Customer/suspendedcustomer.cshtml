@@ -1,0 +1,83 @@
+﻿
+@{
+    ViewBag.Title = "suspendedcustomer";
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+
+@model List<veggiesapp.Models.CustomerWalletjoin>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+
+    $(document).ready(function () {
+
+        $(".suspendedclass").hover(function () {
+            $(this).css("background-color", "red");
+            $(this).css("color", "white")
+        },
+            function () {
+                $(this).css("background-color", "transparent");
+                $(this).css("color", "red")
+            });
+    });
+
+</script>
+
+<div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="page-header">
+            <h2 class="pageheader-title">Customers Management</h2>
+            <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
+            <div class="page-breadcrumb">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Customers Management</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Suspended Customers</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!-- end pageheader -->
+<!-- ============================================================== -->
+
+<div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="card">
+            <h5 class="card-header" style="background-color:#71748d;color:white">Suspended Customers</h5>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered first">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Wallet</th>
+                                <th>Status</th>
+                                <th>Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var custwlt in Model)
+                            {
+                            <tr>
+                                <td>@custwlt.objcust.Name</td>
+                                <td>@custwlt.objcust.Email</td>
+                                <td>@custwlt.objcust.Phone</td>
+                                <td>&#x20B9; @custwlt.objwlt.amount  &nbsp;<a href="@Url.Action("addamount","Wallet",new { id = custwlt.objcust.id})" class="btn btn-info btn-xs"><i class="fa fa-plus"></i> Add</a></td>
+                                <td><a href=@Url.Action("suspendtoactive","Customer",new {id=@custwlt.objcust.id })><input type="button" id="button" onclick="return confirm('are you sure you want to Activate this Customer?');" class="suspendedclass" value="Suspended" style="color:red;background-color:transparent;height:30px;width:85px;border-color: red;" /></a></td>
+                                <td><a href=@Url.Action("viewcustdetails","Customer",new {id=@custwlt.objcust.id })><input type="button" value="View" style="background-color: #5bc0de;color: white;width: 74px;height: 30px;"></a></td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

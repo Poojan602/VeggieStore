@@ -1,0 +1,194 @@
+﻿
+@{
+    ViewBag.Title = "addnotification";
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+
+<style>
+    .product-colors input[type=checkbox], input[type=radio] {
+        display: inline-block !important;
+    }
+</style>
+
+@model veggiesapp.Models.notification
+
+<div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="page-header">
+            <h2 class="pageheader-title">Notification Management</h2>
+            <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
+            <div class="page-breadcrumb">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Notification Management</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Add Notification</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="card">
+            <h5 class="card-header" style="background-color:#71748d;color:white">Add Notification</h5>
+            <div class="card-body">
+                @using (Html.BeginForm("addinternotification", "Notification", FormMethod.Post, new { enctype = "multipart/form-data", @onsubmit = "return !!(checkinput() & validation());" }))
+                {
+                    <div class="row">
+                        <div class="col-lg-12">
+
+                            <div class="form-group">
+                                <label>City : </label>
+                                @if (ViewBag.ctname1 != null)
+                                {
+                                    <select id="comboboxcity" class="form-control" style="width:150px;">
+                                        <option value="-1">Select Value</option>
+                                        @foreach (var city in ViewBag.cities)
+                                        {
+                                            if (city.Name == @ViewBag.ctname1)
+                                            {
+                                                <option selected="selected" value="@ViewBag.ctid1">@ViewBag.ctname1</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@city.id">@city.Name</option>
+                                            }
+                                        }
+                                    </select>
+                                }
+                                else
+                                {
+                                    <select id="comboboxcity" class="form-control" style="width:150px;">
+                                        <option selected="selected" value="-1">Select City</option>
+                                        @foreach (var city in ViewBag.cities)
+                                        {
+                                            <option value="@city.id">@city.Name</option>
+                                        }
+                                    </select>
+                                }
+                                <br />
+                                <span id="dropdownval" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group" id="chkboxvalidation">
+                                <Label>Areas</Label>
+                                @if (Model.check != null)
+                                {
+                                    for (int i = 0; i < Model.check.Count; i++)
+                                    {
+                                        <br />
+                                        @Html.CheckBoxFor(m => m.check[i].ticked, new { @id = "comboboxareastest" })
+                                        @Model.check[i].aname
+                                        @Html.HiddenFor(m => m.check[i].aid)
+                                    }
+                                }<br />
+                                <span id="chkbox" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label style="text-decoration:solid; color:black">Image</label>
+                                <br />
+                                <small>
+                                    [File with .jpg, .gif, .png, .jpeg, .bmp, .pdf extentions / formats only.]<br />
+                                    [Maximum Image Size: 5 MB]<br />
+                                    [Recommended Dimension - Width : 862px - Height :375px]
+                                </small><br /><br /><br />
+                                <input type="file" id="file" name="postedFile" onchange="checkFileDetails()" />
+
+                                <span id="input" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Notification Message</label>
+                                @Html.TextAreaFor(m => m.Message, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Message, null, new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group">
+                                <hr />
+                                <input type="submit" value="Submit" id="sbmt" class="btn btn-primary" />
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $('#comboboxcity').on('change', function () {
+            var cityid = $('#comboboxcity option:selected').val();
+            window.location.href = "@TempData["path"].ToString()" + cityid;
+        });
+    });
+
+    function validation() {
+
+        var ctid = $('#comboboxcity option:selected').val();
+
+        if (ctid == -1) {
+            document.getElementById("dropdownval").innerHTML = "Select City";
+            return false;
+        }
+        else {
+            var checked_checkboxes = $("#chkboxvalidation input[type=checkbox]:checked");
+            if (checked_checkboxes.length == 0) {
+                document.getElementById("chkbox").innerHTML = "Atleast 1 area should be selected";
+                return false;
+            }
+            else {
+                document.getElementById("chkbox").innerHTML = "";
+                return true;
+            }
+        }
+    }
+</script>
+
+<script>
+    function checkFileDetails() {
+
+        var fi = document.getElementById('file');
+        if (fi.files.length > 0) {
+
+            var fileName, fileExtension;
+
+            fileName = fi.files[0].name;
+            fileExtension = fileName.replace(/^.*\./, '');
+
+            if (fileExtension == 'png' || fileExtension == 'jpg' || fileExtension == 'jpeg' || fileExtension == 'gif' || fileExtension == 'bmp' || fileExtension == 'pdf') {
+
+                if (fi.files[0].size > 1024 * 1024 * 5) {
+                    document.getElementById("input").innerHTML = "Image Size should be less than 5 MB!";
+                    document.getElementById("file").value = "";
+                    return false;
+                }
+            }
+            else {
+                document.getElementById("input").innerHTML = "Select Image with appropriate extension";
+                document.getElementById("file").value = "";
+                return false;
+            }
+        }
+    }
+
+    function checkinput() {
+
+        var file = document.getElementById('file');
+
+        if (file.files.length > 0) {
+            return true;
+        }
+        else {
+            //alert("please Select an image");
+            document.getElementById("input").innerHTML = "Please select an image";
+            document.getElementById("file").value = "";
+            return false;
+        }
+    }
+</script>

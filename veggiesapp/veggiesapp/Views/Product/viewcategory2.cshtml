@@ -1,0 +1,82 @@
+﻿
+@{
+    ViewBag.Title = "viewcategory2";
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+
+@model List<veggiesapp.Models.cat1cat2join>
+
+<div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="page-header">
+            <h2 class="pageheader-title">Product Management</h2>
+            <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
+            <div class="page-breadcrumb">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Product Management</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">View Product Category 2</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!-- end pageheader -->
+<!-- ============================================================== -->
+<div class="row">
+    <!-- ============================================================== -->
+    <!-- basic table  -->
+    <!-- ============================================================== -->
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="card">
+            <h5 class="card-header" style="background-color:#71748d;color:white">Product Category 2</h5>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered first">
+                        <thead>
+                            <tr>
+                                <th style="text-align:center">1st Level Category</th>
+                                <th style="text-align:center">2nd Level Category</th>
+                                <th style="text-align:center">2nd Level Category Image</th>
+                                <th style="text-align:center">Visible</th>
+                                <th style="text-align:center">Edit</th>
+                                <th style="text-align:center">Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var ct in Model)
+                            {
+                            <tr>
+                                <td style="text-align:center">@ct.objcat1.name</td>
+                                <td style="text-align:center">@ct.objcat2.name</td>
+
+                                <td style="text-align:center"><img src=@(ct.objcat2.image) width="250px" height="100px"></td>
+
+                                @if (@ct.objcat2.visible == true)
+                                {
+                                    <td style="text-align:center">Yes</td>
+                                }
+                                else
+                                {
+                                    <td style="text-align:center">No</td>
+                                }
+
+                                <td style="text-align:center"><a href=@Url.Action("editcategory2","Product",new {id=ct.objcat2.id })><input type="Button" value="Edit" style="background-color: lightskyblue;color: white;width: 74px;height: 30px;"></a></td>
+                                <td style="text-align:center"><a href=@Url.Action("deletecategory2","Product",new {id=ct.objcat2.id })><input type="Button" value="Delete" onclick="return confirm('are you sure you want to Delete this Sub-Category?');" style="background-color: red;color: white;width: 74px;height: 30px;"></a></td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- end basic table  -->
+    <!-- ============================================================== -->
+</div>
+
+

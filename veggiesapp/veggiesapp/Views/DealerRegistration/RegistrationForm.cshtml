@@ -1,0 +1,221 @@
+﻿
+@{
+    Layout = null;
+}
+
+@model veggiesapp.Models.dealersubscriptionselected
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Dealer Registration</title>
+    <style>
+        .product-colors input[type=checkbox], input[type=radio] {
+            display: inline-block !important;
+        }
+    </style>
+    <link href=@Url.Content("~/Content/bootstrap1.css") rel="stylesheet" />
+    <link href=@Url.Content("~/Content/style1.css") rel="stylesheet" />
+    <link href=@Url.Content("~/Content/css/mediaquery.css") rel="stylesheet" type="text/css" />
+    <link href=@Url.Content("https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600,700,900") rel="stylesheet" type="text/css" />
+
+    <script src=@Url.Content("~/Content/assets/vendor/jquery/jquery-3.3.1.min.js")></script>
+    <script src=@Url.Content("~/Scripts/jquery.validate.min.js")></script>
+    <script src=@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")></script>
+
+</head>
+
+<body>
+    <div class="white-box" id="dealer-register">
+        @using (Html.BeginForm("AddDealer", "DealerRegistration", FormMethod.Post))
+        {
+            <div class="white-box-heading">
+                <h1>Register your dealership with Veggie Store &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <small>Already registered? <a href="~/DealerLogin/loginpage">Login Here</a></small></h1>
+            </div>
+            <hr class="white-box-divider">
+            <div class="white-box-content">
+
+                @if (ViewBag.error != null)
+                {
+                    <div class="row text-center">
+                        <h3 class="text-danger">@ViewBag.error</h3>
+                    </div>
+                }
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="row">
+                    <div class="col-sm-3">&nbsp;</div>
+                    <div class="col-sm-9">
+                        <p class="form-text"><strong>Your Personal Details </strong></p>
+                    </div>
+                </div>
+                <div class="right-box-form">
+                    <div class="row">
+                        <div class="col-sm-3 col-xs-12 form-text text-right"><span class="text-danger">*</span> Your Name</div>
+                        <div class="col-sm-8 col-xs-12">
+                            @Html.TextBoxFor(m => m.dealer.Name, new { @class = "right-box-input" })
+                            @Html.ValidationMessageFor(m => m.dealer.Name, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="right-box-form">
+                    <div class="row">
+                        <div class="col-sm-3 col-xs-12 form-text text-right"><span class="text-danger">*</span> Email Address</div>
+                        <div class="col-sm-8 col-xs-12">
+                            @Html.TextBoxFor(m => m.dealer.Email, new { @class = "right-box-input" })
+                            @Html.ValidationMessageFor(m => m.dealer.Email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="right-box-form">
+                    <div class="row">
+                        <div class="col-sm-3 col-xs-12 form-text text-right"><span class="text-danger">*</span> Contact Number</div>
+                        <div class="col-sm-8 col-xs-12">
+                            @Html.TextBoxFor(m => m.dealer.Phone, new { @class = "right-box-input" })
+                            @Html.ValidationMessageFor(m => m.dealer.Phone, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="right-box-form">
+                    <div class="row">
+                        <div class="col-sm-3 col-xs-12 form-text text-right"><span class="text-danger">*</span> Password</div>
+                        <div class="col-sm-8 col-xs-12">
+                            @Html.TextBoxFor(m => m.dealer.Password, new { @class = "right-box-input", @type = "password" })
+                            @Html.ValidationMessageFor(m => m.dealer.Password, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                @*<div class="right-box-form">
+            <div class="row">
+                <div class="col-sm-3 col-xs-12 form-text text-right"><span class="text-danger">*</span> Retype Password</div>
+                <div class="col-sm-8 col-xs-12">
+                    @Html.TextBoxFor(m => m.dealer.ConfirmPassword, new { @class = "right-box-input", @type = "password" })
+                    @Html.ValidationMessageFor(m => m.dealer.ConfirmPassword, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>*@
+                <hr>
+                <div class="row">
+                    <div class="col-sm-3">&nbsp;</div>
+                    <div class="col-sm-9">
+                        <p class="form-text"><strong>Your Address Details </strong></p>
+                    </div>
+                </div>
+
+                <div class="right-box-form">
+                    <div class="row">
+                        <div class="col-sm-3 col-xs-12 form-text text-right"><span class="text-danger">*</span> Address</div>
+                        <div class="col-sm-8 col-xs-12">
+                            @Html.TextAreaFor(m => m.dealer.Address, new { @class = "right-box-input", @rows = "2", @cols = "20" })
+                            @Html.ValidationMessageFor(m => m.dealer.Address, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="right-box-form">
+                    <div class="row">
+                        <div class="col-sm-3 col-xs-12 form-text text-right"><span class="text-danger">*</span> Landmark</div>
+                        <div class="col-sm-8 col-xs-12">
+                            @Html.TextBoxFor(m => m.dealer.Landmark, new { @class = "right-box-input" })
+                            @Html.ValidationMessageFor(m => m.dealer.Landmark, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div id="UpnlRegister">
+                    <div class="right-box-form">
+                        <div class="row">
+                            <div class="col-sm-3 col-xs-12 form-text text-right"><span class="text-danger">*</span> City</div>
+                            <div class="col-sm-8 col-xs-12">
+                                @Html.DropDownListFor(m => m.dealer.City, @ViewBag.cities as SelectList, "Select City", new { @class = "right-box-input" })
+                                @Html.ValidationMessageFor(m => m.dealer.City, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="right-box-form">
+                        <div class="row">
+                            <div class="col-sm-3 col-xs-12 form-text text-right"><span class="text-danger">*</span> Zip Code</div>
+                            <div class="col-sm-8 col-xs-12">
+                                @Html.TextBoxFor(m => m.dealer.PostCode, new { @class = "right-box-input" })
+                                @Html.ValidationMessageFor(m => m.dealer.PostCode, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">&nbsp;</div>
+                        <div class="col-sm-9">
+                            <p class="form-text"><strong><span class="text-danger">*</span>Areas of serving </strong></p>
+                        </div>
+                    </div>
+
+                    <div class="right-box-form">
+                        <div class="row">
+                            <div class="col-sm-3 col-xs-12 form-text text-right"></div>
+                            <div class="col-sm-8 col-xs-12">
+                                <p class="form-text"><strong><small>Please mention your area in below box, in which you want to serve.</small></strong></p>
+                                @Html.TextAreaFor(m => m.dealer.otherarea, new { @rows = "2", @cols = "20", @class = "right-box-input" })
+                                @Html.ValidationMessageFor(m => m.dealer.otherarea, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-3">&nbsp;</div>
+                    <div class="col-sm-9">
+                        <p class="form-text"><strong><span class="text-danger">*</span>Subscription Plans </strong></p>
+                    </div>
+                </div>
+
+                <div class="right-box-form">
+                    <div class="row">
+                        <div class="col-sm-3 col-xs-12 form-text text-right"></div>
+                        <div class="col-sm-8 col-xs-12">
+                            <table id="rad_Subscription">
+                                <tbody>
+                                    @foreach (var item in Model.subscriptions)
+                                    {
+                                        <tr>
+                                            <td>@Html.RadioButtonFor(m => m.selectedsubscriptionid, item.id)<label>@item.Name - @item.days days - @item.amount Rs.</label></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                            @Html.ValidationMessageFor(m => m.selectedsubscriptionid, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-3">&nbsp;</div>
+                    <div class="col-sm-9">
+                        <p class="form-text"><strong><span class="text-danger">*</span>Delivery Time Slots</strong></p>
+                    </div>
+                </div>
+
+                <div class="right-box-form">
+                    <div class="row">
+                        <div class="col-sm-3 col-xs-12 form-text text-right"></div>
+                        <div class="col-sm-8 col-xs-12">
+                            @Html.TextAreaFor(m => m.dealer.SlotDescription, new { @class = "right-box-input", @rows = "3", @cols = "20", @placeholder = "Delivery Slot Description" })
+                            @Html.ValidationMessageFor(m => m.dealer.SlotDescription, "", new { @class = "text-danger" })<br />
+                            <small>NOTE : you have to give delivery time of your order to your customers, in which they can book that when they will receive the order, these time slots can be remain activated up to cut of timings also be given by you.</small>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <div class="right-box-form">
+                    <div class="row">
+                        <div class="col-sm-3 col-xs-12 form-text text-right">&nbsp;</div>
+                        <div class="col-sm-8 col-xs-12 form-text">
+                            <button id="btnAdd" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</body>
+</html>

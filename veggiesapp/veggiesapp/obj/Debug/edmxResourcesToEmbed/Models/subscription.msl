@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="subscriptionModelStoreContainer" CdmEntityContainer="addsubscription">
+    <EntitySetMapping Name="subscriptions">
+      <EntityTypeMapping TypeName="subscriptionModel.subscription">
+        <MappingFragment StoreEntitySet="subscription">
+          <ScalarProperty Name="S_Name" ColumnName="S_Name" />
+          <ScalarProperty Name="S_Duration" ColumnName="S_Duration" />
+          <ScalarProperty Name="S_Amount" ColumnName="S_Amount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

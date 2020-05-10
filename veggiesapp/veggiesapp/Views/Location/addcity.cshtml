@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewBag.Title = "addcity";
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+
+@model veggiesapp.Models.city
+
+<style>
+    .product-colors input[type=checkbox], input[type=radio] {
+        display: inline-block !important;
+    }
+</style>
+
+<div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="page-header">
+            <h2 class="pageheader-title">Location Management</h2>
+            <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
+            <div class="page-breadcrumb">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Location Management</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Cities</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="row">
+    <!-- horizontal form -->
+    <!-- ============================================================== -->
+    <div class="col-12 ">
+        <div class="card">
+            <h5 class="card-header" style="background-color:#71748d;color:white">Add City</h5>
+            <div class="card-body">
+
+                @using (Html.BeginForm("addintercity", "Location", FormMethod.Post))
+                {
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <div class="form-group">
+                        <label style="color:black">Display on Front page?</label>
+                        <br />
+                        <div class="frontvisible">
+                            @Html.RadioButtonFor(m => m.visible, true, new { @checked = true })
+                            @Html.Label("Yes", new { style = "color:green" })<br />
+                            @Html.RadioButtonFor(m => m.visible, false)
+                            @Html.Label("No", new { style = "color:red" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail2" class="col-3 col-lg-2 col-form-label text-left">City Name</label>
+                        <div class="col-4 col-lg-12">
+                            @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Name, null, new { @class = "text-danger" })<br /><hr />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-6 pl-0">
+                            <p>
+                                <button type="submit" class="btn btn-space btn-primary">Submit</button>
+                            </p>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- end horizontal form -->
+    <!-- ============================================================== -->
+</div>
+
+

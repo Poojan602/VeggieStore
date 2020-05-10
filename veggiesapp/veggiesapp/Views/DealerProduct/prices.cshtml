@@ -1,0 +1,107 @@
+﻿
+@{
+    ViewBag.Title = "prices";
+    Layout = "~/Views/Shared/MyLayout  dealer.cshtml";
+}
+
+@model List<veggiesapp.Models.pricemanager>
+
+<div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="page-header">
+            <h2 class="pageheader-title">Product Management</h2>
+            <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
+            <div class="page-breadcrumb">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Price Management</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Add/Edit Prices</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+
+        @using (Html.BeginForm("addprices", "DealerProduct", FormMethod.Post))
+        {
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col">
+                            <label>Weight</label>
+                        </div>
+                        <div class="col">
+                            <label>Unit</label>
+                        </div>
+                        <div class="col">
+                            <label>Description</label>
+                        </div>
+                        <div class="col">
+                            <label>Actual Price</label>
+                        </div>
+                        <div class="col">
+                            <label>Discounted Price</label>
+                        </div>
+                    </div>
+
+                    @for (int i = 0; i < Model.Count; i++)
+                    {
+                        @Html.HiddenFor(m => Model[i].id)
+                        @Html.HiddenFor(m => Model[i].productid)
+                        <div class="row">
+                            <div class="col">
+                                @Html.TextBoxFor(m => Model[i].Weight, new { @class = "form-control" })
+                            </div>
+                            <div class="col">
+                                    @if (Model[i].Unit == "Kg")
+                                    {
+                                        @Html.DropDownListFor(m => Model[i].Unit , new List<SelectListItem>
+                                        {
+                                            new SelectListItem{ Text = "gm", Value="gm"},
+                                            new SelectListItem{ Text = "Kg", Value="Kg" , Selected = true}
+                                        }, new { @class = "form-control" })
+                                    }
+                                    else if (Model[i].Unit == "gm")
+                                    {
+                                        @Html.DropDownListFor(m => Model[i].Unit , new List<SelectListItem>
+                                        {
+                                            new SelectListItem{ Text = "gm", Value="gm" , Selected = true},
+                                            new SelectListItem{ Text = "Kg", Value="Kg"}
+                                        }, new { @class = "form-control" })
+                                    }
+                                    else
+                                    {
+                                        @Html.DropDownListFor(m => Model[i].Unit , new List<SelectListItem>
+                                    {
+                                        new SelectListItem{ Text = "gm", Value="gm" },
+                                        new SelectListItem{ Text = "Kg", Value="Kg" , Selected = true}
+                                     }, new { @class = "form-control" })
+                                    }
+                            </div>
+                            <div class="col">
+                                @Html.TextBoxFor(m => Model[i].Description, new { @class = "form-control" })
+                            </div>
+                            <div class="col">
+                                @Html.TextBoxFor(m => Model[i].APrice, new { @class = "form-control" })
+                            </div>
+                            <div class="col">
+                                @Html.TextBoxFor(m => Model[i].DPrice, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <br />
+                    }
+                </div>
+                <hr>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="submit" value="Submit" class="btn btn-primary">&nbsp;&nbsp;
+                <input type="submit" value="Cancel" onclick="return confirm('are you sure you want to cancel this process');" class="btn btn-primary">
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="subscriptionModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="subscription">
+    <Key>
+      <PropertyRef Name="S_Name" />
+    </Key>
+    <Property Name="S_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="S_Duration" Type="Int32" Nullable="false" />
+    <Property Name="S_Amount" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="addsubscription" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="subscriptions" EntityType="Self.subscription" />
+  </EntityContainer>
+</Schema>

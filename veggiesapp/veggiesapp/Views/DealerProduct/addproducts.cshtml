@@ -1,0 +1,272 @@
+﻿
+@{
+    ViewBag.Title = "addproducts";
+    Layout = "~/Views/Shared/MyLayout  dealer.cshtml";
+}
+
+@model veggiesapp.Models.product
+
+<style>
+    .product-colors input[type=checkbox], input[type=radio] {
+        display: inline-block !important;
+    }
+</style>
+
+
+<div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="page-header">
+            <h2 class="pageheader-title">Products Management</h2>
+            <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
+            <div class="page-breadcrumb">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a class="breadcrumb-link">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a class="breadcrumb-link">Product Management</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Add Products</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ============================================================== -->
+
+@using (Html.BeginForm("addinterproducts", "DealerProduct", FormMethod.Post, new { enctype = "multipart/form-data", @onsubmit = "return validation()" }))
+{
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="card">
+                <h3 class="card-header" style="background-color:#71748d;color:white">Add Product</h3>
+                <div class="card-body">
+                    <div class="text-center">
+                        <h3 class="text-danger">@ViewBag.error</h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Display on Front-End?</label>
+                                <br />
+                                <div class="frontvisible">
+                                    <span id="">
+                                        @Html.RadioButtonFor(m => m.visible, true, new { @checked = true })
+                                        <label style="color:green">Yes</label>&nbsp;
+                                        @Html.RadioButtonFor(m => m.visible, false)
+                                        <label style="color:red">No</label>
+                                    </span>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="form-group">
+                                    <label>Product Category</label>
+
+                                    @if (ViewBag.cat1name != null)
+                                    {
+                                        <select id="dropdown1" class="form-control" style="width:150px;">
+                                            <option value="-1">Select Category 1</option>
+                                            @foreach (var cat1 in ViewBag.cat1names)
+                                            {
+                                                if (cat1.name == ViewBag.cat1name)
+                                                {
+                                                    <option selected="selected">@ViewBag.cat1name</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@cat1.id">@cat1.name</option>
+                                                }
+                                            }
+                                        </select>
+                                    }
+                                    else
+                                    {
+                                        <select id="dropdown1" class="form-control" style="width:150px;">
+                                            <option selected="selected" value="-1">Select Category 1</option>
+                                            @foreach (var cat1 in ViewBag.cat1names)
+                                            {
+                                                <option value="@cat1.id">@cat1.name</option>
+                                            }
+                                        </select>
+                                    }
+                                    <br />
+                                    <span id="dropdownval1" class="text-danger"></span>
+                                    @Html.HiddenFor(m => m.cat1id, new { @id = "txtcat1Id" })
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Product Sub Category</label>
+
+                                    @if (ViewBag.cat2names != null && ViewBag.cat2name != null)
+                                    {
+                                        <select id="dropdown2" class="form-control" style="width:150px">
+                                            <option value="-1">Select Category 2</option>
+                                            @foreach (var cat2 in ViewBag.cat2names)
+                                            {
+                                                if (cat2.name == ViewBag.cat2name)
+                                                {
+                                                    <option selected="selected">@ViewBag.cat2name</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@cat2.id">@cat2.name</option>
+                                                }
+                                            }
+                                        </select>
+                                    }
+                                    else if (ViewBag.cat2names == null)
+                                    {
+                                        <select id="dropdown2" class="form-control" style="width:150px;">
+                                            <option selected="selected" value="-1">Select Category 2</option>
+                                        </select>
+                                    }
+                                    else
+                                    {
+                                        <select id="dropdown2" class="form-control" style="width:150px;">
+                                            <option selected="selected" value="-1">Select Category 2</option>
+                                            @foreach (var cat2 in ViewBag.cat2names)
+                                            {
+                                                <option value="@cat2.id">@cat2.name</option>
+                                            }
+                                        </select>
+                                    }
+                                    <br />
+                                    <span id="dropdownval2" class="text-danger"></span>
+                                    @Html.HiddenFor(m => m.cat2id, new { @id = "txtcat2Id" })
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Products</label>
+
+                                    @if (ViewBag.products != null)
+                                    {
+                                        <select id="dropdown3" class="form-control" style="width:150px">
+                                            <option value="-1">Select Products</option>
+                                            @foreach (var pr in ViewBag.products)
+                                            {
+                                                if (pr.Title == ViewBag.pname)
+                                                {
+                                                    <option selected="selected">@ViewBag.pname</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@pr.id">@pr.Title</option>
+
+                                                }
+                                            }
+                                        </select>
+                                    }
+                                    else if (ViewBag.products == null)
+                                    {
+                                        <select id="dropdown3" class="form-control" style="width:150px;">
+                                            <option selected="selected" value="-1">Select Products</option>
+                                        </select>
+                                    }
+                                    <span id="dropdownval3" class="text-danger"></span>
+                                    @*//////////*@
+                                    @Html.HiddenFor(m => m.id, new { @id = "txtProductId" })
+                                    @*//////////*@
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <label>Product Title</label>
+                                @Html.TextBoxFor(m => m.Title, new { @class = "form-control", @readonly = "readonly" })
+                            </div>
+                            <div class="form-group">
+                                <label>Product Title (Hindi) </label>
+                                @Html.TextBoxFor(m => m.HindiTitle, new { @class = "form-control" , @readonly= "readonly" })
+                            </div>
+                            <br>
+
+                            <div class="form-group">
+                                <label>About Description</label>
+                                @Html.TextAreaFor(m => m.DESCabout, new { @rows = 2, @cols = 20, @class = "form-control", @readonly = "readonly" })
+                            </div>
+                            <div class="form-group">
+                                <label>Benifits Description</label>
+                                @Html.TextAreaFor(m => m.DESCbenifits, new { @rows = 2, @cols = 20, @class = "form-control", @readonly = "readonly" })
+                            </div>
+                            <div class="form-group">
+                                <label>How to use Description</label>
+                                @Html.TextAreaFor(m => m.DESChowtouse, new { @rows = 2, @cols = 20, @class = "form-control", @readonly = "readonly" })
+                            </div>
+
+                            <div class="form-group">
+                                <hr>
+                                <br class="clear">
+                                <input type="submit" value="Submit" class="btn btn-primary">
+                                <a href=@Url.Action("viewproducts","DealerProduct")><input type="button" value="Cancel" onclick="return confirm('are you sure you want to cancel this process');" class="btn btn-primary"></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Existing Product Image</label>
+                                <br /><br />
+                                &nbsp;
+                                <img src="@Html.DisplayFor(m => m.Image)" width="120px" height="120px">
+                                @Html.HiddenFor(m => m.Image)
+                            </div>
+                            <br />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+
+        $(document).ready(function () {
+            $('#dropdown1').on('change', function () {
+
+                var cat1id = $('#dropdown1 option:selected').val();
+                $('#txtcat1Id').val(cat1id);
+
+                window.location.href = "@TempData["path"].ToString()" + cat1id;
+            });
+
+            $('#dropdown2').on('change', function () {
+
+                var cat2id = $('#dropdown2 option:selected').val();
+                $('#txtcat2Id').val(cat2id);
+
+                window.location.href = "@TempData["path2"].ToString()" + cat2id;
+            });
+
+            $('#dropdown3').on('change', function () {
+
+                var pid = $('#dropdown3 option:selected').val();
+                $('#txtProductId').val(pid);
+
+                window.location.href = "@TempData["path3"].ToString()" + pid;
+            });
+    });
+
+
+    function validation() {
+        var cat1id = $('#dropdown1 option:selected').val();
+        var cat2id = $('#dropdown2 option:selected').val();
+
+        if (cat1id == -1) {
+            document.getElementById("dropdownval1").innerHTML = "Select Category 1";
+            if (cat2id == -1) {
+                document.getElementById("dropdownval2").innerHTML = "Select Category 2";
+                return false;
+            }
+            return false;
+        }
+        else {
+            document.getElementById("dropdownval1").innerHTML = "";
+            if (cat2id == -1) {
+                document.getElementById("dropdownval2").innerHTML = "Select Category 2";
+                return false;
+            }
+            else {
+                document.getElementById("dropdownval2").innerHTML = "";
+                return true;
+            }
+        }
+    }
+</script>
